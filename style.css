@@ -13,19 +13,24 @@
   --background-color-light: #f4f4f4;
 }
 
-.main {
-  margin: 0 auto;
+body {
   font-family: Arial, sans-serif;
   background-color: var(--background-color-light);
+  font-size: 16px;
+}
+
+.main {
+  margin: 0 auto;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-content: flex-start;
   flex-wrap: wrap;
   margin-bottom: 50px;
   overflow: auto;
   padding: 40px;
   width: 100%;
   max-width: 1920px;
+  min-height: calc(100vh - 90px);
 }
 
 .link_box {
@@ -113,6 +118,10 @@
   margin: 15px 0;
 }
 
+.accordion-item {
+  margin: 10px;
+}
+
 .accordion-item.active .accordion-content {
   max-height: 750px;
 }
@@ -148,7 +157,6 @@ section {
 
 pre {
   background: var(--secondary-color);
-  color: var(--text-color);
   padding: 15px;
   overflow-x: auto;
   border-radius: 6px;
@@ -157,6 +165,7 @@ pre {
 code {
   font-family: Consolas, monospace;
   background: var(--secondary-color-op);
+  color: var(--text-color);
   border-radius: 6px;
   padding: 0 2px;
   margin: 3px;
@@ -171,4 +180,89 @@ ul {
   padding: 15px;
   border-left: 5px solid var(--primary-color);
   margin: 20px 0;
+}
+
+@media (max-width: 1024px) {
+  .main {
+    padding: 30px;
+  }
+
+  .link_item {
+    padding: 8px 16px;
+  }
+
+  h1 {
+    font-size: 1.8rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .main {
+    padding: 20px;
+    min-height: calc(100vh - 70px);
+  }
+
+  .link_box {
+    gap: 8px;
+  }
+
+  .content_item {
+    padding: 15px;
+  }
+
+  .accordion-item.active .accordion-content {
+    max-height: 1000px;
+  }
+
+  pre {
+    padding: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    font-size: 14px;
+  }
+
+  .main {
+    padding: 10px;
+    margin-bottom: 20px;
+  }
+
+  .link_box {
+    justify-content: flex-start;
+    overflow-x: auto;
+    white-space: nowrap;
+    flex-wrap: nowrap;
+    padding-bottom: 10px;
+  }
+
+  .link_item {
+    flex: 0 0 auto;
+    padding: 8px 12px;
+    font-size: 13px;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+    padding: 5px;
+  }
+
+  h2 {
+    font-size: 1.3rem;
+  }
+
+  .accordion-header {
+    padding: 12px;
+    font-size: 14px;
+  }
+
+  code {
+    font-size: 12px;
+  }
+
+  .note {
+    padding: 10px;
+    margin: 15px 0;
+  }
 }
