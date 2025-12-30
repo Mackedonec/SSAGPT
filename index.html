@@ -22,6 +22,8 @@
         <li class="link_item">lesson10</li>
         <li class="link_item">lesson11</li>
         <li class="link_item">lesson12</li>
+        <li class="link_item">lesson13</li>
+        <li class="link_item">lesson14</li>
       </ul>
       <div class="content_box">
         <div class="content_item active">
@@ -445,14 +447,13 @@ switch (role) {
               <div class="accordion-content">
                 <p>
                   <a href="lesson1/index.html" target="_blank" class="link"
-                    >Завдання 1-15</a
+                    >Рішення</a
                   >
                 </p>
               </div>
             </div>
           </div>
         </div>
-
         <div class="content_item">
           <div class="accordion">
             <div class="accordion-item">
@@ -894,6 +895,113 @@ console.log(sum); // 10
                     початкове значення.
                   </p>
                 </section>
+                <section>
+                  <h2>Додаткові методи масивів</h2>
+                  <p>
+                    Окрім <code>map</code>, <code>filter</code>,
+                    <code>reduce</code>, у JavaScript є ще кілька методів
+                    масивів, які дуже часто використовуються в реальних
+                    проєктах.
+                  </p>
+                </section>
+
+                <section>
+                  <h3>Метод sort()</h3>
+                  <p>
+                    Метод <code>sort()</code> сортує масив. За замовчуванням
+                    сортує елементи як рядки, тому для чисел майже завжди
+                    потрібно передавати функцію порівняння.
+                  </p>
+
+                  <pre><code>
+const numbers = [10, 2, 30, 5];
+
+numbers.sort((a, b) => a - b);
+console.log(numbers); // [2, 5, 10, 30]
+  </code></pre>
+                </section>
+
+                <section>
+                  <h3>Метод some()</h3>
+                  <p>
+                    Метод <code>some()</code> перевіряє, чи хоча б один елемент
+                    масиву відповідає умові. Повертає <code>true</code> або
+                    <code>false</code>.
+                  </p>
+
+                  <pre><code>
+const numbers = [1, 3, 5, 8];
+
+const hasEven = numbers.some(num => num % 2 === 0);
+console.log(hasEven); // true
+  </code></pre>
+                </section>
+
+                <section>
+                  <h3>Метод every()</h3>
+                  <p>
+                    Метод <code>every()</code> перевіряє, чи всі елементи масиву
+                    відповідають умові. Якщо хоча б один не підходить — повертає
+                    <code>false</code>.
+                  </p>
+
+                  <pre><code>
+const numbers = [2, 4, 6];
+
+const allEven = numbers.every(num => num % 2 === 0);
+console.log(allEven); // true
+  </code></pre>
+                </section>
+
+                <section>
+                  <h3>Метод includes()</h3>
+                  <p>
+                    Метод <code>includes()</code> перевіряє, чи містить масив
+                    певне значення. Повертає <code>true</code> або
+                    <code>false</code>.
+                  </p>
+
+                  <pre><code>
+const fruits = ["apple", "banana", "orange"];
+
+console.log(fruits.includes("banana")); // true
+  </code></pre>
+                </section>
+
+                <section>
+                  <h3>Методи slice() та splice()</h3>
+                  <p>
+                    <code>slice()</code> повертає новий масив і не змінює
+                    оригінальний.<br />
+                    <code>splice()</code> змінює оригінальний масив (додає,
+                    видаляє або замінює елементи).
+                  </p>
+
+                  <pre><code>
+const arr = [1, 2, 3, 4, 5];
+
+const part = arr.slice(1, 3);
+console.log(part); // [2, 3]
+
+arr.splice(2, 1);
+console.log(arr); // [1, 2, 4, 5]
+  </code></pre>
+                </section>
+
+                <section>
+                  <h3>Методи flat() та flatMap()</h3>
+                  <p>
+                    <code>flat()</code> розгортає вкладені масиви.<br />
+                    <code>flatMap()</code> поєднує <code>map()</code> та
+                    <code>flat()</code>.
+                  </p>
+
+                  <pre><code>
+const arr = [1, [2, 3], [4, 5]];
+
+console.log(arr.flat()); // [1, 2, 3, 4, 5]
+  </code></pre>
+                </section>
               </div>
             </div>
             <div class="accordion-item">
@@ -1132,6 +1240,84 @@ console.log(sum); // 10
                     <li>знайди найбільше число в масиві</li>
                   </ul>
                 </div>
+
+                <h4>Завдання sort()</h4>
+                <ul>
+                  <li>Відсортуй масив чисел за зростанням.</li>
+                  <li>Відсортуй масив чисел за спаданням.</li>
+                  <li>Відсортуй масив рядків в алфавітному порядку.</li>
+                  <li>Відсортуй масив об’єктів за полем <code>age</code>.</li>
+                  <li>
+                    Відсортуй масив так, щоб спочатку йшли парні числа, потім
+                    непарні.
+                  </li>
+                </ul>
+
+                <h4>Завдання some()</h4>
+                <ul>
+                  <li>Перевір, чи є в масиві від’ємне число.</li>
+                  <li>Перевір, чи є в масиві число більше 100.</li>
+                  <li>Перевір, чи є в масиві порожній рядок.</li>
+                  <li>Перевір, чи є в масиві хоча б один парний елемент.</li>
+                  <li>
+                    Перевір, чи є в масиві користувач з роллю
+                    <code>admin</code>.
+                  </li>
+                </ul>
+                <h4>Завдання every()</h4>
+                <ul>
+                  <li>Перевір, чи всі числа в масиві додатні.</li>
+                  <li>
+                    Перевір, чи всі рядки в масиві мають довжину більше 3.
+                  </li>
+                  <li>Перевір, чи всі елементи масиву є числами.</li>
+                  <li>
+                    Перевір, чи всі користувачі активні (<code
+                      >isActive === true</code
+                    >).
+                  </li>
+                  <li>Перевір, чи всі числа в масиві парні.</li>
+                </ul>
+
+                <h4>Завдання includes()</h4>
+                <ul>
+                  <li>Перевір, чи масив містить число 10.</li>
+                  <li>
+                    Перевір, чи масив рядків містить слово <code>"admin"</code>.
+                  </li>
+                  <li>Перевір, чи масив містить <code>null</code>.</li>
+                  <li>Перевір, чи в масиві є значення <code>false</code>.</li>
+                  <li>
+                    Перевір, чи масив містить задане значення, передане у
+                    змінній.
+                  </li>
+                </ul>
+
+                <h4>Завдання slice() та splice()</h4>
+                <ul>
+                  <li>Отримай новий масив з перших трьох елементів.</li>
+                  <li>Отримай новий масив без першого елемента.</li>
+                  <li>Видали один елемент з середини масиву.</li>
+                  <li>Замінити один елемент масиву на інший.</li>
+                  <li>
+                    Додати елемент у середину масиву, використовуючи
+                    <code>splice()</code>.
+                  </li>
+                </ul>
+
+                <h4>Завдання flat() та flatMap()</h4>
+                <ul>
+                  <li>Розгорни масив з вкладеними масивами в один рівень.</li>
+                  <li>Розгорни масив вкладеності в 2 рівні.</li>
+                  <li>
+                    З масиву рядків створи масив букв, використовуючи
+                    <code>flatMap()</code>.
+                  </li>
+                  <li>Отримай масив чисел з масиву масивів.</li>
+                  <li>
+                    За допомогою <code>flatMap()</code> помнож кожне число на 2.
+                  </li>
+                </ul>
               </div>
             </div>
             <div class="accordion-item">
@@ -1139,7 +1325,7 @@ console.log(sum); // 10
               <div class="accordion-content">
                 <p>
                   <a href="lesson2/index.html" target="_blank" class="link"
-                    >Завдання 1-15 + 10 додаткових</a
+                    >Рішення</a
                   >
                 </p>
               </div>
@@ -1151,13 +1337,598 @@ console.log(sum); // 10
             <div class="accordion-item">
               <div class="accordion-header">Матеріал</div>
               <div class="accordion-content">
-                <p>Контент</p>
+                <h1>Debugging, Errors та Memory Management в JavaScript</h1>
+
+                <section>
+                  <h2>Що таке debugging</h2>
+                  <p>
+                    <strong>Debugging</strong> — це процес пошуку та виправлення
+                    помилок (bugів) у коді. Помилки можуть бути синтаксичні, під
+                    час виконання або логічні.
+                  </p>
+
+                  <p>
+                    Debugging — нормальна частина розробки. Навіть досвідчені
+                    розробники постійно користуються інструментами
+                    відлагодження.
+                  </p>
+                </section>
+
+                <section>
+                  <h2>Основні способи дебагінгу JavaScript</h2>
+
+                  <h3>1. console.log()</h3>
+                  <p>
+                    Найпростіший і найпопулярніший спосіб перевірити, що
+                    відбувається в коді.
+                  </p>
+
+                  <pre><code>
+const a = 10;
+const b = 4;
+const result = a - b;
+
+console.log(result); // 6
+  </code></pre>
+
+                  <h3>2. debugger</h3>
+                  <p>
+                    Ключове слово <code>debugger</code> зупиняє виконання коду в
+                    цьому місці, якщо відкриті DevTools.
+                  </p>
+
+                  <pre><code>
+const a = 10;
+const b = 25;
+const result = a - Math.sqrt(b);
+
+debugger;
+
+console.log(result);
+  </code></pre>
+
+                  <p>Після зупинки можна:</p>
+                  <ul>
+                    <li>перевіряти значення змінних</li>
+                    <li>крок за кроком виконувати код</li>
+                    <li>шукати логічні помилки</li>
+                  </ul>
+
+                  <h3>3. Breakpoints</h3>
+                  <p>
+                    У вкладці <strong>Sources</strong> DevTools можна ставити
+                    точки зупинки (breakpoints), щоб код автоматично зупинявся у
+                    вибраному рядку.
+                  </p>
+                </section>
+
+                <section>
+                  <h2>Типи помилок у JavaScript</h2>
+
+                  <h3>1. Syntax Error</h3>
+                  <p>
+                    Помилки синтаксису — код взагалі не може бути виконаний.
+                  </p>
+
+                  <pre><code>
+console.log("Hello"
+  </code></pre>
+
+                  <h3>2. Runtime Error (Exception)</h3>
+                  <p>Виникають під час виконання коду.</p>
+
+                  <pre><code>
+printMe(); // ReferenceError
+  </code></pre>
+
+                  <h3>3. Logical Error</h3>
+                  <p>
+                    Код працює без помилок, але результат неправильний. Це
+                    найважчий тип помилок.
+                  </p>
+
+                  <pre><code>
+function sum(a, b) {
+  return a - b; // логічна помилка
+}
+  </code></pre>
+                </section>
+
+                <section>
+                  <h2>Обробка помилок: try / catch</h2>
+
+                  <p>
+                    Конструкція <code>try...catch</code> дозволяє перехоплювати
+                    помилки, щоб програма не «падала».
+                  </p>
+
+                  <pre><code>
+try {
+  const result = someVariable + 10;
+  console.log(result);
+} catch (error) {
+  console.log("Сталася помилка");
+}
+  </code></pre>
+
+                  <h3>Як це працює</h3>
+                  <ol>
+                    <li>Код у <code>try</code> виконується</li>
+                    <li>
+                      Якщо є помилка — виконання переходить у <code>catch</code>
+                    </li>
+                    <li>
+                      Якщо помилки нема — <code>catch</code> пропускається
+                    </li>
+                  </ol>
+                </section>
+
+                <section>
+                  <h2>Error object</h2>
+
+                  <p>
+                    Обʼєкт <code>Error</code> містить інформацію про помилку:
+                  </p>
+
+                  <ul>
+                    <li><code>name</code> — тип помилки</li>
+                    <li><code>message</code> — опис</li>
+                    <li><code>stack</code> — шлях викликів</li>
+                  </ul>
+
+                  <pre><code>
+try {
+  user();
+} catch (error) {
+  console.log(error.name);
+  console.log(error.message);
+}
+  </code></pre>
+                </section>
+
+                <section>
+                  <h2>throw — створення власних помилок</h2>
+
+                  <p>
+                    За допомогою <code>throw</code> можна викидати власні
+                    помилки, якщо дані некоректні.
+                  </p>
+
+                  <pre><code>
+function enterPin(pin) {
+  if (pin.length > 4) {
+    throw new Error("PIN занадто довгий");
+  }
+  return pin;
+}
+
+try {
+  enterPin("12345");
+} catch (error) {
+  console.log(error.message);
+}
+  </code></pre>
+                </section>
+
+                <section>
+                  <h2>finally</h2>
+
+                  <p>
+                    Блок <code>finally</code> виконується
+                    <strong>завжди</strong>, незалежно від того, була помилка чи
+                    ні.
+                  </p>
+
+                  <pre><code>
+try {
+  console.log("try");
+} catch (error) {
+  console.log("catch");
+} finally {
+  console.log("finally");
+}
+  </code></pre>
+                </section>
+
+                <section>
+                  <h2>Memory Management</h2>
+
+                  <p>
+                    JavaScript автоматично керує памʼяттю, але це не означає, що
+                    про неї можна не думати.
+                  </p>
+
+                  <h3>Життєвий цикл памʼяті</h3>
+                  <ol>
+                    <li>Виділення памʼяті</li>
+                    <li>Використання</li>
+                    <li>Звільнення (Garbage Collection)</li>
+                  </ol>
+
+                  <pre><code>
+let user = { name: "Ivan" };
+user = null; // обʼєкт може бути очищений GC
+  </code></pre>
+
+                  <h3>Типові memory leaks</h3>
+                  <ul>
+                    <li>глобальні змінні</li>
+                    <li>забуті таймери</li>
+                    <li>посилання на DOM</li>
+                    <li>замикання (closures)</li>
+                  </ul>
+                </section>
               </div>
             </div>
             <div class="accordion-item">
               <div class="accordion-header">Завдання</div>
               <div class="accordion-content">
-                <p>Контент</p>
+                <h2>Завдання: Debugging</h2>
+
+                <div>
+                  <h3>Завдання 1</h3>
+                  <p>Чому цей код викликає помилку? Виправ його.</p>
+                  <pre><code>
+console.log(userName);
+let userName = "Ivan";
+  </code></pre>
+                </div>
+
+                <div>
+                  <h3>Завдання 2</h3>
+                  <p>Знайди синтаксичну помилку.</p>
+                  <pre><code>
+function sum(a, b {
+  return a + b;
+}
+  </code></pre>
+                </div>
+
+                <div>
+                  <h3>Завдання 3</h3>
+                  <p>Код не падає, але працює неправильно. В чому помилка?</p>
+                  <pre><code>
+function multiply(a, b) {
+  return a + b;
+}
+  </code></pre>
+                </div>
+
+                <div>
+                  <h3>Завдання 4</h3>
+                  <p>Чому в консолі помилка? Виправ код.</p>
+                  <pre><code>
+const user = null;
+console.log(user.name);
+  </code></pre>
+                </div>
+
+                <div>
+                  <h3>Завдання 5</h3>
+                  <p>Чому код не заходить у <code>if</code>?</p>
+                  <pre><code>
+const age = "18";
+
+if (age === 18) {
+  console.log("Доступ дозволено");
+}
+  </code></pre>
+                </div>
+
+                <div>
+                  <h3>Завдання 6</h3>
+                  <p>
+                    Код падає. Оброби помилку за допомогою
+                    <code>try / catch</code>.
+                  </p>
+                  <pre><code>
+const result = data.value + 10;
+console.log(result);
+  </code></pre>
+                </div>
+
+                <div>
+                  <h3>Завдання 7</h3>
+                  <p>
+                    Знайди логічну помилку. Функція має повертати
+                    <code>true</code>, якщо число парне.
+                  </p>
+                  <pre><code>
+function isEven(num) {
+  if (num % 2 === 1) {
+    return true;
+  }
+  return false;
+}
+  </code></pre>
+                </div>
+
+                <div>
+                  <h3>Завдання 8</h3>
+                  <p>
+                    Чому функція іноді повертає <code>undefined</code>? Виправ.
+                  </p>
+                  <pre><code>
+function checkNumber(num) {
+  if (num > 0) {
+    return "Позитивне";
+  }
+  if (num < 0) {
+    return "Негативне";
+  }
+}
+  </code></pre>
+                </div>
+
+                <div>
+                  <h3>Завдання 9</h3>
+                  <p>Код працює не так, як очікується. В чому причина?</p>
+                  <pre><code>
+for (var i = 0; i < 3; i++) {
+  setTimeout(() => {
+    console.log(i);
+  }, 100);
+}
+  </code></pre>
+                </div>
+
+                <div>
+                  <h3>Завдання 10</h3>
+                  <p>
+                    Знайди і виправ помилку, використовуючи
+                    <code>debugger</code>.
+                  </p>
+                  <pre><code>
+function calculate(a, b) {
+  const result = a * b;
+  return result + c;
+}
+
+calculate(5, 2);
+  </code></pre>
+                </div>
+                <h2>Додаткові завдання: try / catch / finally</h2>
+
+                <div>
+                  <h3>Завдання 11</h3>
+                  <p>
+                    Обгорни код у <code>try / catch</code>, щоб програма не
+                    падала, якщо змінна <code>user</code> не оголошена.
+                  </p>
+                  <pre><code>
+console.log(user.name);
+  </code></pre>
+                </div>
+
+                <div>
+                  <h3>Завдання 12</h3>
+                  <p>Напиши <code>try / catch</code>, який:</p>
+                  <ul>
+                    <li>намагається перетворити рядок у число</li>
+                    <li>
+                      якщо це <code>NaN</code> — виводить повідомлення про
+                      помилку
+                    </li>
+                  </ul>
+                </div>
+
+                <div>
+                  <h3>Завдання 13</h3>
+                  <p>
+                    Є функція. Додай обробку помилки за допомогою
+                    <code>try / catch</code>.
+                  </p>
+                  <pre><code>
+function divide(a, b) {
+  return a / b;
+}
+  </code></pre>
+                  <p>
+                    Якщо <code>b === 0</code> — викинь помилку з повідомленням
+                    <code>"Ділення на нуль"</code>.
+                  </p>
+                </div>
+
+                <div>
+                  <h3>Завдання 14</h3>
+                  <p>
+                    Використай <code>finally</code>, щоб повідомлення
+                    <code>"Операція завершена"</code> виводилось завжди.
+                  </p>
+                  <pre><code>
+try {
+  console.log("Робота з даними");
+} catch (error) {
+  console.log("Помилка");
+}
+  </code></pre>
+                </div>
+
+                <div>
+                  <h3>Завдання 15</h3>
+                  <p>Напиши функцію, яка:</p>
+                  <ul>
+                    <li>приймає рядок</li>
+                    <li>перетворює його в число</li>
+                    <li>
+                      використовує <code>try / catch</code> для обробки помилки
+                    </li>
+                    <li>
+                      у <code>finally</code> виводить
+                      <code>"Перевірка завершена"</code>
+                    </li>
+                  </ul>
+                </div>
+
+                <h2>Завдання: Цикли</h2>
+
+                <div>
+                  <h3>Завдання 1</h3>
+                  <p>Виведи всі парні числа від 1 до 50.</p>
+                </div>
+
+                <div>
+                  <h3>Завдання 2</h3>
+                  <p>
+                    Є масив чисел. Знайди суму всіх елементів, використовуючи
+                    цикл.
+                  </p>
+                </div>
+
+                <div>
+                  <h3>Завдання 3</h3>
+                  <p>Виведи всі елементи масиву у зворотному порядку.</p>
+                </div>
+
+                <div>
+                  <h3>Завдання 4</h3>
+                  <p>Знайди найбільше число в масиві.</p>
+                </div>
+
+                <div>
+                  <h3>Завдання 5</h3>
+                  <p>Порахуй кількість додатних чисел у масиві.</p>
+                </div>
+
+                <div>
+                  <h3>Завдання 6</h3>
+                  <p>Виведи всі рядки, довжина яких більше 3 символів.</p>
+                </div>
+
+                <div>
+                  <h3>Завдання 7</h3>
+                  <p>
+                    Знайди перше число в масиві, яке більше за 100,
+                    використовуючи цикл.
+                  </p>
+                </div>
+
+                <div>
+                  <h3>Завдання 8</h3>
+                  <p>Створи новий масив, у якому всі числа помножені на 2.</p>
+                </div>
+
+                <div>
+                  <h3>Завдання 9</h3>
+                  <p>Порахуй, скільки разів у масиві зустрічається число 0.</p>
+                </div>
+
+                <div>
+                  <h3>Завдання 10</h3>
+                  <p>Знайди мінімальне число в масиві.</p>
+                </div>
+                <h2>Завдання: Функції</h2>
+
+                <div>
+                  <h3>Завдання 1</h3>
+                  <p>
+                    Напиши функцію, яка приймає число і повертає його квадрат.
+                  </p>
+                </div>
+
+                <div>
+                  <h3>Завдання 2</h3>
+                  <p>Функція приймає два числа і повертає більше з них.</p>
+                </div>
+
+                <div>
+                  <h3>Завдання 3</h3>
+                  <p>Функція приймає масив чисел і повертає їх суму.</p>
+                </div>
+
+                <div>
+                  <h3>Завдання 4</h3>
+                  <p>Функція приймає рядок і повертає його довжину.</p>
+                </div>
+
+                <div>
+                  <h3>Завдання 5</h3>
+                  <p>Функція перевіряє, чи число парне.</p>
+                </div>
+
+                <div>
+                  <h3>Завдання 6</h3>
+                  <p>Функція приймає масив і повертає останній елемент.</p>
+                </div>
+
+                <div>
+                  <h3>Завдання 7</h3>
+                  <p>
+                    Функція приймає масив чисел і повертає новий масив тільки з
+                    додатних.
+                  </p>
+                </div>
+
+                <div>
+                  <h3>Завдання 8</h3>
+                  <p>
+                    Функція приймає рядок і повертає <code>true</code>, якщо він
+                    не порожній.
+                  </p>
+                </div>
+
+                <div>
+                  <h3>Завдання 9</h3>
+                  <p>Функція приймає число і повертає факторіал.</p>
+                </div>
+
+                <div>
+                  <h3>Завдання 10</h3>
+                  <p>
+                    Функція створює лічильник і повертає функцію, яка збільшує
+                    значення на 1.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <div class="accordion-header">Рішення</div>
+              <div class="accordion-content">
+                <p>
+                  <a href="lesson3/index.html" target="_blank" class="link"
+                    >Рішення</a
+                  >
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="content_item">
+          <div class="accordion">
+            <div class="accordion-item">
+              <div class="accordion-header">Матеріал</div>
+              <div class="accordion-content">
+                <p>Контент першого розділу акордіону.</p>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <div class="accordion-header">Завдання</div>
+              <div class="accordion-content">
+                <p>Контент другого розділу акордіону.</p>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <div class="accordion-header">Рішення</div>
+              <div class="accordion-content">
+                <p>
+                  <a href="#" class="link">Завдання 1-15</a>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="content_item">
+          <div class="accordion">
+            <div class="accordion-item">
+              <div class="accordion-header">Матеріал</div>
+              <div class="accordion-content">
+                <p>Контент першого розділу акордіону.</p>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <div class="accordion-header">Завдання</div>
+              <div class="accordion-content">
+                <p>Контент другого розділу акордіону.</p>
               </div>
             </div>
             <div class="accordion-item">

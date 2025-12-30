@@ -264,3 +264,184 @@ let biggestReducednumberArr = numberArr.reduce(function (a, c) {
 }, numberArr[0]);
 
 console.log(biggestReducednumberArr);
+
+// Additional Task 1
+const numbers = [5, 2, 9, 1, 4, 8, 7, 10, 3, 6];
+
+let sortByBig = [...numbers].sort((a, b) => a - b);
+console.log(sortByBig);
+
+// Additional Task 2
+
+let sortBySmall = [...numbers].sort((a, b) => b - a);
+console.log(sortBySmall);
+
+// Additional Task 3
+
+const strArr = ["apple", "i", "banana", "st", "lemon", "orange", ""];
+
+let sortStrArr = [...strArr].sort();
+console.log(sortStrArr);
+
+// Additional Task 4
+
+const users2 = [
+  { name: "Іван", age: 25, role: "user", isActive: true },
+  { name: "Марія", age: 42, role: "user", isActive: true },
+  { name: "Олексій", age: 18, role: "admin", isActive: false },
+  { name: "Анна", age: 36, role: "user", isActive: true },
+  { name: "Оля", age: 41, role: "user", isActive: true },
+];
+
+let sortUsers = [...users2].sort((a, b) => a.age - b.age);
+let sortUsers2 = [...users2].sort((a, b) => b.age - a.age);
+console.table(sortUsers);
+console.table(sortUsers2);
+
+// Additional Task 5
+
+let evenOddArr = numbers.toSorted((a, b) => (a % 2) - (b % 2));
+console.log(evenOddArr);
+
+// Additional Task 6
+
+const numbers2 = [-1, 550, 120, -115, 3, -7, -8, 18, 225];
+
+let hasNegative = numbers2.some((num) => num < 0);
+console.log(hasNegative);
+
+// Additional Task 7
+
+let hasBiggestThenHundred = numbers2.some((num) => num > 100);
+console.log(hasBiggestThenHundred);
+
+// Additional Task 8
+
+let hasEmpty = strArr.some((char) => char === "");
+console.log(hasEmpty);
+
+// Additional Task 9
+
+let hasEven = numbers2.some((num) => num % 2 === 0);
+console.log(hasEven);
+
+// Additional Task 10
+
+let hasAdmin = users2.some((user) => user.role === "admin");
+console.log(hasAdmin);
+
+// Additional Task 11
+
+let allPositive = numbers2.every((num) => num > 0);
+console.log(allPositive);
+
+// Additional Task 12
+
+let allBigestThenThree = strArr.every((str) => str.length > 3);
+console.log(allBigestThenThree);
+
+// Additional Task 13
+
+let allHasBeenNumbers = numbers2.every((num) => typeof num === "number");
+console.log(allHasBeenNumbers);
+
+// Additional Task 14
+
+let allActive = users2.every((user) => user.isActive === true);
+console.log(allActive);
+
+// Additional Task 15
+
+let allEven = numbers.every((num) => num % 2 === 0);
+console.log(allEven);
+
+// Additional Task 16
+
+let hasIncludTen = numbers.includes(10);
+console.log(hasIncludTen);
+
+// Additional Task 17
+
+let hasIncludAdmin = strArr.includes("admin");
+console.log(hasIncludAdmin);
+
+// Additional Task 18
+
+const differentArr = [true, false, null, undefined, "str", 10];
+
+let hasNull = differentArr.includes(null);
+console.log(hasNull);
+
+// Additional Task 19
+
+let hasFalse = differentArr.includes(false);
+console.log(hasFalse);
+
+// Additional Task 20
+
+const numTen = 10;
+
+let hasTen = numbers.includes(numTen);
+console.log(hasTen);
+
+// Additional Task 21
+
+let firstThree = strArr.slice(0, 3);
+console.log(firstThree);
+
+// Additional Task 22
+
+let withoutSecond = strArr.slice(1);
+console.log(withoutSecond);
+
+// Additional Task 23
+
+let arrcopy = strArr.slice();
+console.log(arrcopy);
+let deleteOneFromCenter = arrcopy.splice(arrcopy.length / 2, 1);
+console.log(deleteOneFromCenter);
+console.log(arrcopy);
+
+// Additional Task 24
+let arrcopy2 = strArr.slice();
+console.log(arrcopy2);
+let replaceOne = arrcopy2.splice(2, 1, "pineapple");
+console.log(replaceOne);
+console.log(arrcopy2);
+
+// Additional Task 25
+
+let arrcopy3 = strArr.slice();
+console.log(arrcopy3);
+let addOneFromCenter = arrcopy3.splice(arrcopy3.length / 2, 0, "mango");
+console.log(addOneFromCenter);
+console.log(arrcopy3);
+
+// Additional Task 26
+
+const arrInArr = [1, 2, 3, 4, [5, 6], [7, 8]];
+const arrInArrInArr = [1, 2, 3, [4, [5, 6], [7, 8]]];
+const arrInArrInfinity = [1, [2, [3, [[4, [5, 6], [7, 8]]]]]];
+
+let flatArr = arrInArr.flat();
+console.log(flatArr);
+
+// Additional Task 27
+
+let flatArrTwice = arrInArrInArr.flat(2);
+console.log(flatArrTwice);
+
+// Additional Task 28
+
+let charFromArr = strArr.flatMap((s) => s.split(""));
+console.log(charFromArr);
+
+// Additional Task 29
+
+let anotheFletArr = arrInArrInfinity.flat(Infinity);
+console.log(anotheFletArr);
+
+// Additional Task 30
+
+let numberFlatMap = anotheFletArr.flatMap((num) => num * 2);
+console.log(numberFlatMap);
