@@ -1898,20 +1898,559 @@ try {
             <div class="accordion-item">
               <div class="accordion-header">Матеріал</div>
               <div class="accordion-content">
-                <p>Контент першого розділу акордіону.</p>
+                <section class="section">
+                  <h2>
+                    Обʼєкти та обʼєктно-орієнтоване програмування (OOP) в
+                    JavaScript
+                  </h2>
+                  <p>
+                    У JavaScript більшість даних представлено у вигляді
+                    обʼєктів. Обʼєкти дозволяють зберігати повʼязані дані та
+                    логіку разом.
+                  </p>
+                </section>
+
+                <section>
+                  <h3>Що таке обʼєкт</h3>
+                  <p>
+                    Обʼєкт — це набір властивостей (ключ → значення). Значенням
+                    може бути будь-що: число, рядок, масив, функція.
+                  </p>
+
+                  <pre><code>
+const user = {
+  name: "Іван",
+  age: 25,
+  isAdmin: false
+};
+  </code></pre>
+
+                  <p>
+                    Обʼєкти зручні, коли потрібно зберігати дані, які логічно
+                    належать одне одному.
+                  </p>
+                </section>
+
+                <section>
+                  <h3>Властивості та методи</h3>
+                  <p>
+                    Якщо значення властивості — функція, така властивість
+                    називається методом.
+                  </p>
+
+                  <pre><code>
+const user = {
+  name: "Іван",
+  greet() {
+    console.log("Привіт!");
+  }
+};
+
+user.greet();
+  </code></pre>
+
+                  <p>
+                    Методи дозволяють обʼєкту виконувати дії, повʼязані з його
+                    даними.
+                  </p>
+                </section>
+
+                <section>
+                  <h3>Ключове слово this</h3>
+                  <p>
+                    <code>this</code> — це посилання на обʼєкт, у контексті
+                    якого викликається метод.
+                  </p>
+
+                  <pre><code>
+const user = {
+  name: "Марія",
+  sayName() {
+    console.log(this.name);
+  }
+};
+
+user.sayName();
+  </code></pre>
+
+                  <p>
+                    <strong>Важливо:</strong> <code>this</code> працює коректно
+                    лише тоді, коли метод викликається через обʼєкт.
+                  </p>
+                </section>
+
+                <section>
+                  <h3>Створення обʼєктів: функція-конструктор</h3>
+                  <p>
+                    Раніше обʼєкти часто створювали за допомогою
+                    функцій-конструкторів.
+                  </p>
+
+                  <pre><code>
+function User(name, age) {
+  this.name = name;
+  this.age = age;
+}
+
+const user1 = new User("Іван", 30);
+  </code></pre>
+
+                  <p>
+                    Зараз такий підхід зустрічається рідше, але важливо його
+                    розуміти.
+                  </p>
+                </section>
+
+                <section>
+                  <h3>Класи в JavaScript</h3>
+                  <p>
+                    Класи — це сучасний і зручний спосіб створення обʼєктів
+                    одного типу. Під капотом вони працюють через прототипи.
+                  </p>
+
+                  <pre><code>
+class User {
+  constructor(name, age) {
+    this.name = name;
+    this.age = age;
+  }
+
+  greet() {
+    console.log("Привіт, " + this.name);
+  }
+}
+
+const user = new User("Анна", 28);
+user.greet();
+  </code></pre>
+                </section>
+
+                <section>
+                  <h3>Конструктор</h3>
+                  <p>
+                    Метод <code>constructor</code> викликається автоматично при
+                    створенні нового обʼєкта. Він використовується для
+                    ініціалізації властивостей.
+                  </p>
+
+                  <pre><code>
+class Product {
+  constructor(title, price) {
+    this.title = title;
+    this.price = price;
+  }
+}
+  </code></pre>
+                </section>
+
+                <section>
+                  <h3>Наслідування (extends)</h3>
+                  <p>
+                    Наслідування дозволяє створювати нові класи на основі
+                    існуючих.
+                  </p>
+
+                  <pre><code>
+class Animal {
+  speak() {
+    console.log("Тварина видає звук");
+  }
+}
+
+class Dog extends Animal {
+  speak() {
+    console.log("Гав!");
+  }
+}
+
+const dog = new Dog();
+dog.speak();
+  </code></pre>
+
+                  <p>
+                    Клас <code>Dog</code> наслідує поведінку класу
+                    <code>Animal</code>.
+                  </p>
+                </section>
+
+                <section>
+                  <h3>Ключове слово super</h3>
+                  <p>
+                    <code>super</code> використовується для виклику конструктора
+                    або методів батьківського класу.
+                  </p>
+
+                  <pre><code>
+class Person {
+  constructor(name) {
+    this.name = name;
+  }
+}
+
+class Employee extends Person {
+  constructor(name, position) {
+    super(name);
+    this.position = position;
+  }
+}
+  </code></pre>
+                </section>
+
+                <section>
+                  <h3>Статичні методи</h3>
+                  <p>
+                    Статичні методи належать класу, а не конкретному обʼєкту.
+                  </p>
+
+                  <pre><code>
+class MathUtils {
+  static sum(a, b) {
+    return a + b;
+  }
+}
+
+MathUtils.sum(2, 3);
+  </code></pre>
+                </section>
+
+                <section>
+                  <h3>Геттери та сеттери</h3>
+                  <p>
+                    Геттери та сеттери дозволяють контролювати доступ до
+                    властивостей.
+                  </p>
+
+                  <pre><code>
+class User {
+  constructor(name) {
+    this._name = name;
+  }
+
+  get name() {
+    return this._name;
+  }
+
+  set name(value) {
+    this._name = value;
+  }
+}
+  </code></pre>
+                </section>
+
+                <section>
+                  <h3>Інкапсуляція</h3>
+                  <p>
+                    Інкапсуляція — це приховування внутрішньої реалізації. У
+                    JavaScript це досягається через домовленості або приватні
+                    поля.
+                  </p>
+
+                  <pre><code>
+class Counter {
+  #count = 0;
+
+  increment() {
+    this.#count++;
+    return this.#count;
+  }
+}
+  </code></pre>
+
+                  <p>Приватні поля не доступні ззовні класу.</p>
+                </section>
+
+                <section>
+                  <h3>Підсумок</h3>
+                  <ul>
+                    <li>Обʼєкти — основа JavaScript</li>
+                    <li>Класи — зручна обгортка над прототипами</li>
+                    <li>OOP допомагає структурувати код</li>
+                    <li>Не потрібно ускладнювати ієрархії</li>
+                  </ul>
+                </section>
               </div>
             </div>
             <div class="accordion-item">
               <div class="accordion-header">Завдання</div>
               <div class="accordion-content">
-                <p>Контент другого розділу акордіону.</p>
+                <h2>Завдання з OOP</h2>
+
+                <div>
+                  <h3>Завдання 1</h3>
+                  <p>
+                    Створи клас <code>User</code>, який приймає
+                    <code>name</code> та <code>age</code>.
+                  </p>
+                  <p>
+                    Додай метод <code>getInfo()</code>, який повертає рядок:
+                    <code>"Користувач: Імʼя, вік: X"</code>.
+                  </p>
+                </div>
+
+                <div>
+                  <h3>Завдання 2</h3>
+                  <p>
+                    Створи клас <code>Product</code> з властивостями
+                    <code>title</code> та <code>price</code>.
+                  </p>
+                  <p>
+                    Додай метод <code>getPriceWithTax()</code>, який повертає
+                    ціну з ПДВ (20%).
+                  </p>
+                </div>
+
+                <div>
+                  <h3>Завдання 3</h3>
+                  <p>
+                    Створи клас <code>Counter</code>, який має внутрішнє
+                    значення.
+                  </p>
+                  <ul>
+                    <li>метод <code>increment()</code></li>
+                    <li>метод <code>decrement()</code></li>
+                    <li>метод <code>getValue()</code></li>
+                  </ul>
+                </div>
+
+                <div>
+                  <h3>Завдання 4</h3>
+                  <p>
+                    Створи клас <code>Rectangle</code>, який приймає ширину і
+                    висоту.
+                  </p>
+                  <p>
+                    Додай методи <code>getArea()</code> та
+                    <code>getPerimeter()</code>.
+                  </p>
+                </div>
+
+                <div>
+                  <h3>Завдання 5</h3>
+                  <p>
+                    Створи клас <code>Animal</code> з методом
+                    <code>speak()</code>.
+                  </p>
+                  <p>
+                    Створи клас <code>Dog</code>, який наслідує
+                    <code>Animal</code> і перевизначає метод
+                    <code>speak()</code>.
+                  </p>
+                </div>
+
+                <div>
+                  <h3>Завдання 6</h3>
+                  <p>Створи клас <code>Person</code> з <code>name</code>.</p>
+                  <p>
+                    Створи клас <code>Employee</code>, який наслідує
+                    <code>Person</code> і додає <code>position</code>.
+                  </p>
+                </div>
+
+                <div>
+                  <h3>Завдання 7</h3>
+                  <p>
+                    Додай у клас <code>User</code> геттер <code>isAdult</code>,
+                    який повертає <code>true</code>, якщо вік ≥ 18.
+                  </p>
+                </div>
+
+                <div>
+                  <h3>Завдання 8</h3>
+                  <p>
+                    Створи клас <code>Car</code> з властивостями
+                    <code>brand</code> та <code>speed</code>.
+                  </p>
+                  <p>
+                    Додай методи <code>accelerate()</code> і
+                    <code>brake()</code>.
+                  </p>
+                </div>
+
+                <div>
+                  <h3>Завдання 9</h3>
+                  <p>
+                    Створи клас <code>MathUtils</code> зі статичним методом
+                    <code>sum(a, b)</code>.
+                  </p>
+                </div>
+
+                <div>
+                  <h3>Завдання 10</h3>
+                  <p>Створи клас <code>BankAccount</code> з балансом.</p>
+                  <p>
+                    Додай методи <code>deposit()</code> та
+                    <code>withdraw()</code>.
+                  </p>
+                </div>
+                <h2>Розширені завдання: OOP + попередні теми</h2>
+
+                <div>
+                  <h3>Завдання 11</h3>
+                  <p>
+                    Створи клас <code>User</code>. Створи масив користувачів і
+                    відфільтруй тільки повнолітніх.
+                  </p>
+                </div>
+
+                <div>
+                  <h3>Завдання 12</h3>
+                  <p>
+                    Створи клас <code>Product</code>. За допомогою
+                    <code>map()</code> отримай масив назв товарів.
+                  </p>
+                </div>
+
+                <div>
+                  <h3>Завдання 13</h3>
+                  <p>
+                    Створи клас <code>Order</code> з масивом товарів. Додай
+                    метод для підрахунку загальної суми (<code>reduce</code>).
+                  </p>
+                </div>
+
+                <div>
+                  <h3>Завдання 14</h3>
+                  <p>
+                    Створи клас <code>User</code> з роллю. Перевір, чи є хоча б
+                    один <code>admin</code> (<code>some</code>).
+                  </p>
+                </div>
+
+                <div>
+                  <h3>Завдання 15</h3>
+                  <p>
+                    Створи клас <code>Employee</code>. Відсортуй масив
+                    працівників за віком.
+                  </p>
+                </div>
+
+                <div>
+                  <h3>Завдання 16</h3>
+                  <p>
+                    Створи клас <code>Cart</code>, який містить товари. Додай
+                    метод додавання і видалення товару.
+                  </p>
+                </div>
+
+                <div>
+                  <h3>Завдання 17</h3>
+                  <p>
+                    У класі <code>Cart</code> додай метод, який повертає тільки
+                    дорогі товари (> 1000).
+                  </p>
+                </div>
+
+                <div>
+                  <h3>Завдання 18</h3>
+                  <p>
+                    Створи клас <code>Counter</code> з приватним полем. Перевір,
+                    що до нього не можна звернутись напряму.
+                  </p>
+                </div>
+
+                <div>
+                  <h3>Завдання 19</h3>
+                  <p>
+                    Створи клас <code>Library</code> з масивом книг. Реалізуй
+                    пошук книги за назвою.
+                  </p>
+                </div>
+
+                <div>
+                  <h3>Завдання 20</h3>
+                  <p>
+                    Створи клас <code>Bank</code>, який зберігає кілька
+                    рахунків. Знайди рахунок з найбільшим балансом.
+                  </p>
+                </div>
+
+                <div>
+                  <h3>Завдання 21</h3>
+                  <p>
+                    Додай у клас <code>User</code> метод, який повертає
+                    ініціали.
+                  </p>
+                </div>
+
+                <div>
+                  <h3>Завдання 22</h3>
+                  <p>
+                    Створи клас <code>Shop</code>. Перевір, чи всі товари є в
+                    наявності (<code>every</code>).
+                  </p>
+                </div>
+
+                <div>
+                  <h3>Завдання 23</h3>
+                  <p>
+                    У класі <code>Order</code> реалізуй метод, який повертає
+                    кількість товарів у замовленні.
+                  </p>
+                </div>
+
+                <div>
+                  <h3>Завдання 24</h3>
+                  <p>
+                    Створи клас <code>Playlist</code> з масивом пісень. Реалізуй
+                    метод перемішування списку.
+                  </p>
+                </div>
+
+                <div>
+                  <h3>Завдання 25</h3>
+                  <p>
+                    Створи клас <code>Game</code> з рахунком гравця. Реалізуй
+                    логіку перемоги та поразки через умови.
+                  </p>
+                </div>
+
+                <div>
+                  <h3>Завдання 26</h3>
+                  <p>
+                    Створи клас <code>TodoList</code> з масивом задач. Додай
+                    метод отримання виконаних задач.
+                  </p>
+                </div>
+
+                <div>
+                  <h3>Завдання 27</h3>
+                  <p>
+                    Реалізуй клас <code>Timer</code>, який використовує
+                    <code>setTimeout</code>.
+                  </p>
+                </div>
+
+                <div>
+                  <h3>Завдання 28</h3>
+                  <p>
+                    Створи клас <code>UserManager</code>, який працює з масивом
+                    користувачів.
+                  </p>
+                </div>
+
+                <div>
+                  <h3>Завдання 29</h3>
+                  <p>
+                    У класі <code>Cart</code> реалізуй метод очищення кошика.
+                  </p>
+                </div>
+
+                <div>
+                  <h3>Завдання 30</h3>
+                  <p>
+                    Створи клас <code>Statistics</code>, який працює з масивом
+                    чисел і повертає мінімум, максимум і середнє.
+                  </p>
+                </div>
               </div>
             </div>
             <div class="accordion-item">
               <div class="accordion-header">Рішення</div>
               <div class="accordion-content">
                 <p>
-                  <a href="#" class="link">Завдання 1-15</a>
+                  <a href="lesson4/index.html" target="_blank" class="link"
+                    >Рішення</a
+                  >
                 </p>
               </div>
             </div>
