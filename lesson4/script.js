@@ -341,7 +341,7 @@ const employeesArr = [
   new Employees("beb", 8, "employee"),
 ];
 
-const sorterEmployee = employeesArr.sort((a, b) => a._age - b._age);
+const sorterEmployee = employeesArr.toSorted((a, b) => a._age - b._age);
 
 console.log(employeesArr);
 
@@ -508,7 +508,7 @@ class Shop {
   addGoods(val) {
     this.goods.push(val);
   }
-  chechStock() {
+  checkStock() {
     return this.goods.every((el) => el.stock > 0);
   }
 }
@@ -522,7 +522,7 @@ myShop.addGoods(new ShopGoods("goods4", 550, 120));
 myShop.addGoods(new ShopGoods("goods5", 650, 20));
 myShop.addGoods(new ShopGoods("goods6", 12555, 350));
 
-const inStock = myShop.chechStock();
+const inStock = myShop.checkStock();
 console.log(inStock);
 
 // Additional Task 14
