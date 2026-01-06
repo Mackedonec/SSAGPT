@@ -4264,20 +4264,559 @@ console.log(`Середнє: ${myStats.getAverage()}`);
             <div class="accordion-item">
               <div class="accordion-header">Матеріал</div>
               <div class="accordion-content">
-                <p>Контент першого розділу акордіону.</p>
+                <section>
+                  <h1>DOM (Document Object Model)</h1>
+                  <p>
+                    DOM — це обʼєктне представлення HTML-сторінки, з яким
+                    JavaScript може взаємодіяти: читати, змінювати, додавати або
+                    видаляти елементи.
+                  </p>
+                  <p>
+                    Простими словами:
+                    <strong>DOM дозволяє JavaScript керувати HTML</strong>.
+                  </p>
+                </section>
+
+                <section>
+                  <h3>document та window</h3>
+                  <p>
+                    <code>window</code> — глобальний обʼєкт браузера.
+                    <code>document</code> — частина window, яка представляє
+                    HTML-документ.
+                  </p>
+
+                  <pre><code>
+console.log(window);
+console.log(document);
+  </code></pre>
+
+                  <p>
+                    У повсякденній роботі ти майже завжди працюєш саме з
+                    <code>document</code>.
+                  </p>
+                </section>
+
+                <section>
+                  <h3>Пошук елементів у DOM</h3>
+                  <p>
+                    Щоб працювати з HTML-елементом, спочатку потрібно його
+                    знайти.
+                  </p>
+
+                  <pre><code>
+const title = document.getElementById("title");
+const button = document.querySelector(".btn");
+const items = document.querySelectorAll(".item");
+  </code></pre>
+
+                  <ul>
+                    <li><code>getElementById</code> — шукає по id</li>
+                    <li>
+                      <code>querySelector</code> — перший елемент за
+                      CSS-селектором
+                    </li>
+                    <li>
+                      <code>querySelectorAll</code> — всі елементи (NodeList)
+                    </li>
+                  </ul>
+
+                  <p>
+                    У сучасному коді найчастіше використовують
+                    <code>querySelector</code> та <code>querySelectorAll</code>.
+                  </p>
+                </section>
+
+                <section>
+                  <h3>Робота з текстом</h3>
+                  <p>DOM дозволяє змінювати текст всередині елементів.</p>
+
+                  <pre><code>
+const text = document.querySelector("p");
+text.textContent = "Новий текст";
+  </code></pre>
+
+                  <p>
+                    <code>textContent</code> змінює лише текст, без HTML — це
+                    безпечний варіант.
+                  </p>
+                </section>
+
+                <section>
+                  <h3>innerHTML (важливе застереження)</h3>
+                  <p>
+                    <code>innerHTML</code> дозволяє вставляти HTML-код у
+                    елемент.
+                  </p>
+
+                  <pre><code>
+container.innerHTML = "&lt;strong&gt;Привіт&lt;/strong&gt;";
+  </code></pre>
+
+                  <p>
+                    ⚠️ Використовуй <code>innerHTML</code> обережно — він може
+                    бути небезпечним, якщо HTML приходить від користувача.
+                  </p>
+                </section>
+
+                <section>
+                  <h3>Навігація по DOM</h3>
+                  <p>Кожен DOM-елемент має звʼязки з іншими елементами.</p>
+
+                  <pre><code>
+const parent = element.parentElement;
+const children = element.children;
+const first = element.firstElementChild;
+  </code></pre>
+
+                  <p>
+                    Це корисно, коли потрібно працювати зі структурою сторінки.
+                  </p>
+                </section>
+
+                <section>
+                  <h3>Створення елементів</h3>
+                  <p>
+                    JavaScript може створювати нові HTML-елементи динамічно.
+                  </p>
+
+                  <pre><code>
+const div = document.createElement("div");
+div.textContent = "Новий елемент";
+document.body.append(div);
+  </code></pre>
+
+                  <p>
+                    Такий підхід використовується для списків, карток,
+                    повідомлень.
+                  </p>
+                </section>
+
+                <section>
+                  <h3>Видалення елементів</h3>
+                  <p>DOM-елементи можна видаляти напряму.</p>
+
+                  <pre><code>
+element.remove();
+  </code></pre>
+
+                  <p>Це зручно для модалок, алертів, динамічних списків.</p>
+                </section>
+
+                <section>
+                  <h3>Робота з класами</h3>
+                  <p>
+                    Класи — основний спосіб змінювати стилі через JavaScript.
+                  </p>
+
+                  <pre><code>
+element.classList.add("active");
+element.classList.remove("hidden");
+element.classList.toggle("open");
+  </code></pre>
+
+                  <p>
+                    <code>classList</code> — найбільш безпечний та зручний
+                    спосіб роботи з класами.
+                  </p>
+                </section>
+
+                <section>
+                  <h3>Атрибути</h3>
+                  <p>JavaScript може читати та змінювати HTML-атрибути.</p>
+
+                  <pre><code>
+img.setAttribute("src", "image.png");
+const alt = img.getAttribute("alt");
+  </code></pre>
+                </section>
+
+                <section>
+                  <h3>Події (короткий вступ)</h3>
+                  <p>
+                    Події дозволяють реагувати на дії користувача: кліки,
+                    введення тексту, наведення миші.
+                  </p>
+
+                  <pre><code>
+button.addEventListener("click", () => {
+  console.log("Кнопку натиснуто");
+});
+  </code></pre>
+
+                  <p>Це основа будь-якої інтерактивності на сайті.</p>
+                </section>
+
+                <section>
+                  <h3>Підсумок</h3>
+                  <ul>
+                    <li>DOM — міст між JS і HTML</li>
+                    <li>Пошук елементів — перший крок</li>
+                    <li>classList — найкращий спосіб керувати стилями</li>
+                    <li>DOM — фундамент для React та інших фреймворків</li>
+                  </ul>
+                </section>
               </div>
             </div>
             <div class="accordion-item">
               <div class="accordion-header">Завдання</div>
               <div class="accordion-content">
-                <p>Контент другого розділу акордіону.</p>
+                <h2>Завдання по DOM (базовий рівень)</h2>
+
+                <div>
+                  <h3>Завдання 1</h3>
+                  <p>В HTML є абзац з класом <code>info-text</code>.</p>
+                  <p>Завдання:</p>
+                  <ul>
+                    <li>знайди цей елемент через DOM</li>
+                    <li>зміни його текст на <code>"DOM працює"</code></li>
+                  </ul>
+                </div>
+
+                <div>
+                  <h3>Завдання 2</h3>
+                  <p>
+                    Є кнопка з <code>id="changeBtn"</code> та заголовок
+                    <code>&lt;h2 id="title"&gt;</code>.
+                  </p>
+                  <p>Завдання:</p>
+                  <ul>
+                    <li>повісь обробник кліку на кнопку</li>
+                    <li>
+                      при кліку змінюй текст заголовка на
+                      <code>"Текст змінено"</code>
+                    </li>
+                  </ul>
+                </div>
+
+                <div>
+                  <h3>Завдання 3</h3>
+                  <p>
+                    Є кілька елементів <code>&lt;li&gt;</code> з класом
+                    <code>menu-item</code>.
+                  </p>
+                  <p>Завдання:</p>
+                  <ul>
+                    <li>знайди всі ці елементи</li>
+                    <li>зміни текст кожного на <code>"Пункт меню"</code></li>
+                  </ul>
+                </div>
+
+                <div>
+                  <h3>Завдання 4</h3>
+                  <p>Є контейнер <code>&lt;div id="container"&gt;</code>.</p>
+                  <p>Завдання:</p>
+                  <ul>
+                    <li>створи елемент <code>&lt;p&gt;</code></li>
+                    <li>запиши в нього текст <code>"Новий параграф"</code></li>
+                    <li>додай його всередину контейнера</li>
+                  </ul>
+                </div>
+
+                <div>
+                  <h3>Завдання 5</h3>
+                  <p>
+                    Є кнопка з <code>id="addTextBtn"</code> та контейнер
+                    <code>&lt;div id="box"&gt;</code>.
+                  </p>
+                  <p>Завдання:</p>
+                  <ul>
+                    <li>
+                      при кожному кліку створюй новий <code>&lt;span&gt;</code>
+                    </li>
+                    <li>текст span: <code>"Новий елемент"</code></li>
+                    <li>додавай його в контейнер</li>
+                  </ul>
+                </div>
+
+                <div>
+                  <h3>Завдання 6</h3>
+                  <p>Є елемент <code>&lt;div id="message"&gt;</code>.</p>
+                  <p>Завдання:</p>
+                  <ul>
+                    <li>замінити його HTML-вміст</li>
+                    <li>
+                      результат має виглядати так:
+                      <code
+                        >&lt;strong&gt;Увага!&lt;/strong&gt; DOM оновлено</code
+                      >
+                    </li>
+                  </ul>
+                </div>
+
+                <div>
+                  <h3>Завдання 7</h3>
+                  <p>
+                    Є <code>&lt;input id="nameInput"&gt;</code> та
+                    <code>&lt;p id="output"&gt;</code>.
+                  </p>
+                  <p>Завдання:</p>
+                  <ul>
+                    <li>відслідковуй подію <code>blur</code> на input</li>
+                    <li>виводь введений текст у абзац</li>
+                  </ul>
+                </div>
+
+                <div>
+                  <h3>Завдання 8</h3>
+                  <p>
+                    Є кнопка <code>removeBtn</code> та елемент
+                    <code>&lt;div class="banner"&gt;</code>.
+                  </p>
+                  <p>Завдання:</p>
+                  <ul>
+                    <li>при кліку на кнопку видалити banner з DOM</li>
+                  </ul>
+                </div>
+
+                <div>
+                  <h3>Завдання 9</h3>
+                  <p>Є елемент <code>&lt;div id="colorBox"&gt;</code>.</p>
+                  <p>Завдання:</p>
+                  <ul>
+                    <li>
+                      при кліку змінити background на <code>"tomato"</code>
+                    </li>
+                    <li>змінити текст елемента на <code>"Активний"</code></li>
+                  </ul>
+                </div>
+
+                <div>
+                  <h3>Завдання 10</h3>
+                  <p>
+                    Є кнопка <code>counterBtn</code> та
+                    <code>&lt;span id="counterValue"&gt;0&lt;/span&gt;</code>.
+                  </p>
+                  <p>Завдання:</p>
+                  <ul>
+                    <li>при кожному кліку збільшувати число на 1</li>
+                    <li>оновлювати текст span</li>
+                  </ul>
+                </div>
+                <h2>Комбіновані завдання (DOM + логіка)</h2>
+
+                <div>
+                  <h3>Завдання 1</h3>
+                  <p>
+                    Є кнопка <code>addItemBtn</code> та порожній список
+                    <code>&lt;ul id="list"&gt;</code>.
+                  </p>
+                  <p>Завдання:</p>
+                  <ul>
+                    <li>створи масив з 3 рядків</li>
+                    <li>
+                      при кліку на кнопку додай всі елементи масиву в список
+                    </li>
+                  </ul>
+                </div>
+
+                <div>
+                  <h3>Завдання 2</h3>
+                  <p>
+                    Є <code>&lt;input id="textInput"&gt;</code> та кнопка
+                    <code>showBtn</code>.
+                  </p>
+                  <p>Завдання:</p>
+                  <ul>
+                    <li>при кліку перевір, чи input не порожній</li>
+                    <li>якщо порожній — виведи помилку в консоль</li>
+                    <li>інакше — додай текст в DOM</li>
+                  </ul>
+                </div>
+
+                <div>
+                  <h3>Завдання 3</h3>
+                  <p>Є масив чисел та кнопка <code>renderNumbers</code>.</p>
+                  <p>Завдання:</p>
+                  <ul>
+                    <li>відфільтруй тільки парні числа</li>
+                    <li>відобрази їх у DOM як <code>&lt;li&gt;</code></li>
+                  </ul>
+                </div>
+
+                <div>
+                  <h3>Завдання 4</h3>
+                  <p>Є кілька кнопок з класом <code>action-btn</code>.</p>
+                  <p>Завдання:</p>
+                  <ul>
+                    <li>
+                      при кліку на будь-яку кнопку змінюй її текст на
+                      <code>"Натиснуто"</code>
+                    </li>
+                    <li>інші кнопки не змінюються</li>
+                  </ul>
+                </div>
+
+                <div>
+                  <h3>Завдання 5</h3>
+                  <p>Є список задач у вигляді масиву рядків.</p>
+                  <p>Завдання:</p>
+                  <ul>
+                    <li>відобрази задачі у DOM</li>
+                    <li>при кліку на задачу — перекреслюй її</li>
+                  </ul>
+                </div>
+
+                <div>
+                  <h3>Завдання 6</h3>
+                  <p>Є <code>&lt;input type="number"&gt;</code> та кнопка.</p>
+                  <p>Завдання:</p>
+                  <ul>
+                    <li>при кліку перевір, чи введено число</li>
+                    <li>якщо ні — оброби через <code>try/catch</code></li>
+                    <li>результат покажи в DOM</li>
+                  </ul>
+                </div>
+
+                <div>
+                  <h3>Завдання 7</h3>
+                  <p>
+                    Є кнопка <code>toggleBtn</code> та блок <code>box</code>.
+                  </p>
+                  <p>Завдання:</p>
+                  <ul>
+                    <li>
+                      перемикай клас <code>active</code> при кожному кліку
+                    </li>
+                    <li>виводь поточний стан в тексті</li>
+                  </ul>
+                </div>
+
+                <div>
+                  <h3>Завдання 8</h3>
+                  <p>Є масив імен та input для пошуку.</p>
+                  <p>Завдання:</p>
+                  <ul>
+                    <li>фільтруй масив по введеному тексту</li>
+                    <li>оновлюй список у DOM в реальному часі</li>
+                  </ul>
+                </div>
+
+                <div>
+                  <h3>Завдання 9</h3>
+                  <p>Є кнопка <code>calcBtn</code>.</p>
+                  <p>Завдання:</p>
+                  <ul>
+                    <li>при кліку створюй 2 випадкові числа</li>
+                    <li>покажи їх суму у DOM</li>
+                  </ul>
+                </div>
+
+                <div>
+                  <h3>Завдання 10</h3>
+                  <p>Є список <code>&lt;li&gt;</code>.</p>
+                  <p>Завдання:</p>
+                  <ul>
+                    <li>при кліку на пункт змінюй його колір</li>
+                    <li>запамʼятовуй останній активний пункт</li>
+                  </ul>
+                </div>
+
+                <div>
+                  <h3>Завдання 11</h3>
+                  <p>Є кнопка <code>removeLast</code> та список.</p>
+                  <p>Завдання:</p>
+                  <ul>
+                    <li>при кліку видаляй останній елемент зі списку</li>
+                    <li>якщо список порожній — нічого не роби</li>
+                  </ul>
+                </div>
+
+                <div>
+                  <h3>Завдання 12</h3>
+                  <p>Є форма з input та кнопкою submit.</p>
+                  <p>Завдання:</p>
+                  <ul>
+                    <li>скасуй стандартну поведінку форми</li>
+                    <li>дані відобрази у DOM</li>
+                  </ul>
+                </div>
+
+                <div>
+                  <h3>Завдання 13</h3>
+                  <p>Є кілька checkbox.</p>
+                  <p>Завдання:</p>
+                  <ul>
+                    <li>порахуй кількість відмічених</li>
+                    <li>оновлюй число в DOM</li>
+                  </ul>
+                </div>
+
+                <div>
+                  <h3>Завдання 14</h3>
+                  <p>Є масив чисел.</p>
+                  <p>Завдання:</p>
+                  <ul>
+                    <li>відсортуй масив по зростанню</li>
+                    <li>результат покажи у DOM</li>
+                  </ul>
+                </div>
+
+                <div>
+                  <h3>Завдання 15</h3>
+                  <p>Є кнопка <code>timerBtn</code>.</p>
+                  <p>Завдання:</p>
+                  <ul>
+                    <li>при кліку запусти таймер на 5 секунд</li>
+                    <li>оновлюй час у DOM</li>
+                  </ul>
+                </div>
+
+                <div>
+                  <h3>Завдання 16</h3>
+                  <p>Є input та список.</p>
+                  <p>Завдання:</p>
+                  <ul>
+                    <li>додавай введений текст у список</li>
+                    <li>очищай input після додавання</li>
+                  </ul>
+                </div>
+
+                <div>
+                  <h3>Завдання 17</h3>
+                  <p>Є блок з текстом.</p>
+                  <p>Завдання:</p>
+                  <ul>
+                    <li>по наведенню миші змінюй текст</li>
+                    <li>при виході — повертай початковий</li>
+                  </ul>
+                </div>
+
+                <div>
+                  <h3>Завдання 18</h3>
+                  <p>Є масив чисел.</p>
+                  <p>Завдання:</p>
+                  <ul>
+                    <li>знайди максимальне значення</li>
+                    <li>покажи його у DOM</li>
+                  </ul>
+                </div>
+
+                <div>
+                  <h3>Завдання 19</h3>
+                  <p>Є кнопка <code>randomColor</code>.</p>
+                  <p>Завдання:</p>
+                  <ul>
+                    <li>генеруй випадковий колір</li>
+                    <li>застосовуй його до фону сторінки</li>
+                  </ul>
+                </div>
+
+                <div>
+                  <h3>Завдання 20</h3>
+                  <p>Є список та кнопка <code>clearAll</code>.</p>
+                  <p>Завдання:</p>
+                  <ul>
+                    <li>очисти DOM-список</li>
+                    <li>очисти повʼязаний масив</li>
+                  </ul>
+                </div>
               </div>
             </div>
             <div class="accordion-item">
               <div class="accordion-header">Рішення</div>
               <div class="accordion-content">
                 <p>
-                  <a href="#" class="link">Завдання 1-15</a>
+                  <a href="lesson5/index.html" class="link">Рішення</a>
                 </p>
               </div>
             </div>

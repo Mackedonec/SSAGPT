@@ -1,9 +1,64 @@
-body {
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+body {
+  background-color: #b8b5b5;
+}
+
+main {
+  margin: 0 auto;
   display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  padding: 40px;
+  width: 100%;
+  max-width: 1920px;
+  min-height: calc(100vh - 90px);
+}
+
+section {
+  display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: #888282;
+  margin: 20px;
+  border: 2px solid black;
+  border-radius: 15px;
+  width: 100%;
+  max-width: 500px;
+  padding: 20px;
+}
+
+h1,
+.h1 {
+  font-size: 36px;
+}
+
+.at5-li,
+.at10-li {
+  list-style: none;
+  background-color: rgb(139, 59, 48);
+  color: white;
+  margin: 2px;
+  padding: 5px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.at5-li.crossed-text,
+.at10-li.crossed-text {
+  background-color: rgb(35, 104, 14);
+  text-decoration: line-through;
+}
+
+.form-input-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: rgba(255, 255, 255, 0.398);
 }
