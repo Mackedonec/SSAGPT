@@ -62,3 +62,30 @@ h1,
   align-items: center;
   color: rgba(255, 255, 255, 0.398);
 }
+
+main {
+  filter: none;
+}
+
+.modal-open main {
+  filter: blur(15px);
+}
+
+.at3-modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 350px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid black;
+  border-radius: 15px;
+  padding: 20px;
+}
+
+.at3-modal.hidden {
+  display: none;
+}
