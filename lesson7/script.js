@@ -135,4 +135,215 @@ console.log(regUserName.test(userName3));
 console.log(regUserName.test(userName4));
 console.log(regUserName.test(userName5));
 
-// Additional Task 1
+// Additional Task 1 & 2 & 3 & 5
+
+const myForm = document.querySelector("#my-form");
+const emailInput = document.querySelector("#email-input");
+const emailOutput = document.querySelector("#email-output");
+const passwordInput = document.querySelector("#password-input");
+const passwordOutput = document.querySelector("#password-output");
+const nameInput = document.querySelector("#name-input");
+const nameOutput = document.querySelector("#name-output");
+const phoneInput = document.querySelector("#phone-input");
+const phoneOutput = document.querySelector("#phone-output");
+const submitBtn = document.querySelector("#submit-btn");
+
+myForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+  let valid = true;
+
+  const regMail = /^\w+@[a-z]+\.[a-z]+$/i;
+  const emailValue = emailInput.value;
+
+  if (!emailValue) {
+    emailOutput.textContent = "Error input-field is empty";
+    emailOutput.classList.add("alert");
+    valid = false;
+  } else if (regMail.test(emailValue) === false) {
+    emailOutput.textContent = "Error incorect email";
+    emailOutput.classList.add("alert");
+    valid = false;
+  } else {
+    emailOutput.textContent = "Success your email acepted";
+    emailOutput.classList.remove("alert");
+    emailOutput.classList.add("success");
+  }
+
+  const regPassword = /^(?=.*[A-Z])(?=.*\d).{8,}$/;
+  const passwordValue = passwordInput.value;
+
+  if (!passwordValue) {
+    passwordOutput.textContent = "Error input-field is empty";
+    passwordOutput.classList.add("alert");
+    valid = false;
+  } else if (regPassword.test(passwordValue) === false) {
+    passwordOutput.textContent = "Error incorect password";
+    passwordOutput.classList.add("alert");
+    valid = false;
+  } else {
+    passwordOutput.textContent = "Success your password acepted";
+    passwordOutput.classList.remove("alert");
+    passwordOutput.classList.add("success");
+  }
+
+  const regName = /^[a-z]\w{2,15}$/i;
+  const nameValue = nameInput.value;
+
+  if (!nameValue) {
+    nameOutput.textContent = "Error input-field is empty";
+    nameOutput.classList.add("alert");
+    valid = false;
+  } else if (regName.test(nameValue) === false) {
+    nameOutput.textContent = "Error incorect name";
+    nameOutput.classList.add("alert");
+    valid = false;
+  } else {
+    nameOutput.textContent = "Success your name acepted";
+    nameOutput.classList.remove("alert");
+    nameOutput.classList.add("success");
+  }
+
+  const regTelNumber = /^\+380\d{9}$/;
+  const phoneValue = phoneInput.value;
+
+  if (!phoneValue) {
+    phoneOutput.textContent = "Error input-field is empty";
+    phoneOutput.classList.add("alert");
+    valid = false;
+  } else if (regTelNumber.test(phoneValue) === false) {
+    phoneOutput.textContent = "Error invalid phone";
+    phoneOutput.classList.add("alert");
+    valid = false;
+  } else {
+    phoneOutput.textContent = "Success valid phone";
+    phoneOutput.classList.remove("alert");
+    phoneOutput.classList.add("success");
+  }
+
+  if (valid) {
+    setTimeout(() => {
+      passwordInput.value = "";
+      passwordOutput.textContent = "...";
+      passwordOutput.classList.remove("success");
+      emailInput.value = "";
+      emailOutput.textContent = "...";
+      emailOutput.classList.remove("success");
+      nameInput.value = "";
+      nameOutput.textContent = "...";
+      nameOutput.classList.remove("success");
+      phoneInput.value = "";
+      phoneOutput.textContent = "...";
+      phoneOutput.classList.remove("success");
+    }, 1000);
+  }
+});
+
+// Additional Task 4
+
+const textarea = document.querySelector("#textarea");
+const checkBtn = document.querySelector("#check-btn");
+
+checkBtn.addEventListener("click", () => {
+  const regManySpaces = /\s{2,}/g;
+  const newStr = textarea.value.replace(regManySpaces, " ");
+  textarea.value = newStr.trim();
+});
+
+// Additional Task 6
+
+const searchInput = document.querySelector("#search-input");
+const contentBlock = document.querySelector("#content-block");
+const originalText = contentBlock.textContent;
+
+searchInput.addEventListener("input", () => {
+  const query = searchInput.value.trim();
+
+  if (query === "") {
+    contentBlock.textContent = originalText;
+    return;
+  }
+
+  const regex = new RegExp(`(${query})`, "gi");
+  const highlightedText = originalText.replace(
+    regex,
+    '<span class="highlight">$1</span>'
+  );
+
+  contentBlock.innerHTML = highlightedText;
+});
+
+searchInput.addEventListener("focus", () => {
+  searchInput.value = "";
+  contentBlock.textContent = originalText;
+});
+
+// Additional Task 7
+
+const htmlTagsInput = document.querySelector("#html-tags");
+const clearTagButton = document.querySelector("#clear-tags");
+const defaultText = `<h1>sample text</h1>
+<p>try clear button</p>
+<span>or</span>
+<h2>write</h2>
+<p>your</p>
+<span>own</span>
+<p>text</p>`;
+htmlTagsInput.value = defaultText;
+
+clearTagButton.addEventListener("click", () => {
+  const regDeleteHtml = /<\/?[a-z0-9]+>/gim;
+  const cleanedText = htmlTagsInput.value.replace(regDeleteHtml, " ");
+  htmlTagsInput.value = cleanedText.trim();
+});
+
+// Additional Task 8
+
+const inputFindNum = document.querySelector("#input-find-num");
+const numCount = document.querySelector("#num-count");
+
+inputFindNum.addEventListener("input", () => {
+  const regNum = /\d/g;
+  const matches = inputFindNum.value.match(regNum) || [];
+  numCount.textContent = matches.length;
+});
+
+inputFindNum.addEventListener("focus", () => {
+  inputFindNum.value = "";
+  numCount.textContent = 0;
+});
+
+// Additional Task 9
+
+const dateInput = document.querySelector("#date-input");
+const dateStatus = document.querySelector("#date-status");
+
+dateInput.addEventListener("blur", () => {
+  const regDate = /^\d{4}-\d{2}-\d{2}$/;
+  const value = dateInput.value;
+
+  if (regDate.test(value)) {
+    dateStatus.textContent = "Формат вірний! ✅";
+  } else {
+    dateStatus.textContent = "Помилка: використовуйте формат YYYY-MM-DD ❌";
+  }
+});
+
+dateInput.addEventListener("focus", () => {
+  dateInput.value = "";
+  dateStatus.textContent = "";
+});
+
+// Additional Task 10
+
+const textInput = document.querySelector("#text-only-input");
+
+textInput.addEventListener("input", () => {
+  const regForbidden = /[^a-zA-Z\s]/g;
+  const currentValue = textInput.value;
+
+  textInput.value = currentValue.replace(regForbidden, "");
+});
+
+textInput.addEventListener("focus", () => {
+  textInput.value = "";
+});
