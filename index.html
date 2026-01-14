@@ -7077,20 +7077,500 @@ textInput.addEventListener("focus", () => {
             <div class="accordion-item">
               <div class="accordion-header">Матеріал</div>
               <div class="accordion-content">
-                <p>Контент першого розділу акордіону.</p>
+                <h2 class="h1">ES6: Spread, Destructuring, Symbol, Set, Map</h2>
+
+                <section>
+                  <h2>1. let та const</h2>
+                  <p>
+                    <strong>let</strong> і <strong>const</strong> мають блочну
+                    область видимості.
+                  </p>
+
+                  <pre><code>
+// Змінна доступна лише в блоці
+if (true) {
+  let name = "Oleh";
+  const age = 25;
+}
+
+// name і age тут недоступні
+    </code></pre>
+
+                  <div class="note">
+                    <strong>Памʼятай:</strong> const забороняє перевизначення
+                    змінної, але не зміну обʼєкта.
+                  </div>
+                </section>
+
+                <section>
+                  <h2>2. Template Literals</h2>
+                  <p>
+                    Дозволяють вставляти змінні та робити багаторядкові строки.
+                  </p>
+
+                  <pre><code>
+const name = "Ivan";
+const job = "Frontend developer";
+
+const message = `${name} works as a ${job}`;
+console.log(message);
+    </code></pre>
+                </section>
+
+                <section>
+                  <h2>3. Arrow Functions</h2>
+                  <p>
+                    Короткий синтаксис функцій та відсутність власного
+                    <code>this</code>.
+                  </p>
+
+                  <pre><code>
+// Звичайна функція
+function sum(a, b) {
+  return a + b;
+}
+
+// Arrow-функція
+const sumArrow = (a, b) => a + b;
+    </code></pre>
+
+                  <div class="note">
+                    Arrow-функції не мають власного <code>this</code> — це дуже
+                    важливо для React.
+                  </div>
+                </section>
+
+                <section>
+                  <h2>4. Spread оператор (...)</h2>
+                  <p>Розгортає масив або обʼєкт.</p>
+
+                  <pre><code>
+const numbers = [3, 7, 1, 9];
+
+const min = Math.min(...numbers);
+console.log(min); // 1
+
+const arr1 = [1, 2];
+const arr2 = [3, 4];
+
+const merged = [...arr1, ...arr2];
+console.log(merged);
+    </code></pre>
+                </section>
+
+                <section>
+                  <h2>5. Rest параметри (...)</h2>
+                  <p>Збирає аргументи функції в масив.</p>
+
+                  <pre><code>
+function showArgs(first, ...rest) {
+  console.log(first);
+  console.log(rest);
+}
+
+showArgs("A", "B", "C", "D");
+    </code></pre>
+                </section>
+
+                <section>
+                  <h2>6. Destructuring масивів</h2>
+
+                  <pre><code>
+const colors = ["red", "green", "blue"];
+
+const [first, second] = colors;
+console.log(first);  // red
+console.log(second); // green
+
+const [, , third] = colors;
+console.log(third); // blue
+    </code></pre>
+                </section>
+
+                <section>
+                  <h2>7. Destructuring обʼєктів</h2>
+
+                  <pre><code>
+const user = {
+  name: "Oleh",
+  age: 28,
+  city: "Lviv"
+};
+
+const { name, age } = user;
+console.log(name, age);
+    </code></pre>
+
+                  <pre><code>
+// Вкладений destructuring
+const data = {
+  info: {
+    title: "JS",
+    level: "middle"
+  }
+};
+
+const {
+  info: { title, level }
+} = data;
+
+console.log(title, level);
+    </code></pre>
+                </section>
+
+                <section>
+                  <h2>8. Symbol</h2>
+                  <p>Symbol — унікальний примітивний тип.</p>
+
+                  <pre><code>
+const id = Symbol("id");
+
+const user = {
+  name: "Ivan",
+  [id]: 123
+};
+
+console.log(user[id]); // 123
+    </code></pre>
+
+                  <div class="note">
+                    Symbol-властивості не перебираються через for...in.
+                  </div>
+                </section>
+
+                <section>
+                  <h2>9. Set</h2>
+                  <p>Колекція унікальних значень.</p>
+
+                  <pre><code>
+const cities = new Set();
+
+cities.add("Kyiv");
+cities.add("Lviv");
+cities.add("Kyiv");
+
+console.log(cities.size); // 2
+
+for (const city of cities) {
+  console.log(city);
+}
+    </code></pre>
+                </section>
+
+                <section>
+                  <h2>10. Map</h2>
+                  <p>Колекція пар ключ → значення.</p>
+
+                  <pre><code>
+const userMap = new Map();
+
+userMap.set("name", "Oleh");
+userMap.set("age", 30);
+
+console.log(userMap.get("name"));
+console.log(userMap.has("age"));
+    </code></pre>
+
+                  <pre><code>
+// Перебір Map
+for (const [key, value] of userMap) {
+  console.log(key, value);
+}
+    </code></pre>
+                </section>
               </div>
             </div>
             <div class="accordion-item">
               <div class="accordion-header">Завдання</div>
               <div class="accordion-content">
-                <p>Контент другого розділу акордіону.</p>
+                <h2 class="h1">
+                  Завдання по ES6 (Spread, Destructuring, Set, Map)
+                </h2>
+
+                <div>
+                  <h3>Завдання 1</h3>
+                  <p>Є масив чисел.</p>
+                  <ul>
+                    <li>створи його копію за допомогою spread</li>
+                    <li>зміни перший елемент у копії</li>
+                    <li>переконайся, що оригінальний масив не змінився</li>
+                  </ul>
+                </div>
+
+                <div>
+                  <h3>Завдання 2</h3>
+                  <p>Є два масиви з числами.</p>
+                  <ul>
+                    <li>обʼєднай їх в один масив за допомогою spread</li>
+                    <li>виведи результат у консоль</li>
+                  </ul>
+                </div>
+
+                <div>
+                  <h3>Завдання 3</h3>
+                  <p>Напиши функцію, яка:</p>
+                  <ul>
+                    <li>приймає будь-яку кількість чисел (rest)</li>
+                    <li>повертає їх середнє значення</li>
+                  </ul>
+                </div>
+
+                <div>
+                  <h3>Завдання 4</h3>
+                  <p>Є масив з 5 елементів.</p>
+                  <ul>
+                    <li>використай destructuring</li>
+                    <li>отримай перший, другий та останній елементи</li>
+                  </ul>
+                </div>
+
+                <div>
+                  <h3>Завдання 5</h3>
+                  <p>Є обʼєкт користувача з властивостями name, age, city.</p>
+                  <ul>
+                    <li>витягни name та city через destructuring</li>
+                    <li>виведи їх у консоль</li>
+                  </ul>
+                </div>
+
+                <div>
+                  <h3>Завдання 6</h3>
+                  <p>Є обʼєкт з вкладеним обʼєктом.</p>
+                  <ul>
+                    <li>використай вкладений destructuring</li>
+                    <li>отримай значення з глибини 2</li>
+                  </ul>
+                </div>
+
+                <div>
+                  <h3>Завдання 7</h3>
+                  <p>Створи Set з повторюваними значеннями.</p>
+                  <ul>
+                    <li>
+                      переконайся, що значення зберігаються лише унікальні
+                    </li>
+                  </ul>
+                </div>
+
+                <div>
+                  <h3>Завдання 8</h3>
+                  <p>Є масив чисел.</p>
+                  <ul>
+                    <li>перетвори його в Set</li>
+                    <li>назад у масив без дублікатів</li>
+                  </ul>
+                </div>
+
+                <div>
+                  <h3>Завдання 9</h3>
+                  <p>Створи Map для зберігання:</p>
+                  <ul>
+                    <li>ключ — імʼя користувача</li>
+                    <li>значення — його вік</li>
+                  </ul>
+                </div>
+
+                <div>
+                  <h3>Завдання 10</h3>
+                  <p>Додай у Map 3 записи.</p>
+                  <ul>
+                    <li>отримай значення за одним ключем</li>
+                    <li>перевір наявність іншого ключа</li>
+                  </ul>
+                </div>
+
+                <div>
+                  <h3>Завдання 11</h3>
+                  <p>Пройдися по Map циклом.</p>
+                  <ul>
+                    <li>виведи всі ключі та значення</li>
+                  </ul>
+                </div>
+
+                <div>
+                  <h3>Завдання 12</h3>
+                  <p>Є функція, яка приймає обʼєкт.</p>
+                  <ul>
+                    <li>використай destructuring прямо в параметрах функції</li>
+                  </ul>
+                </div>
+
+                <div>
+                  <h3>Завдання 13</h3>
+                  <p>Є масив чисел.</p>
+                  <ul>
+                    <li>передай його в Math.max за допомогою spread</li>
+                  </ul>
+                </div>
+
+                <div>
+                  <h3>Завдання 14</h3>
+                  <p>Напиши функцію, яка:</p>
+                  <ul>
+                    <li>приймає перше число окремо</li>
+                    <li>решту — через rest</li>
+                    <li>повертає суму всіх чисел</li>
+                  </ul>
+                </div>
+
+                <div>
+                  <h3>Завдання 15</h3>
+                  <p>Є два обʼєкти з різними властивостями.</p>
+                  <ul>
+                    <li>обʼєднай їх в один обʼєкт через spread</li>
+                  </ul>
+                </div>
+
+                <div>
+                  <h3>Завдання 16</h3>
+                  <p>Є масив рядків.</p>
+                  <ul>
+                    <li>
+                      використай Set для підрахунку кількості унікальних значень
+                    </li>
+                  </ul>
+                </div>
+
+                <div>
+                  <h3>Завдання 17</h3>
+                  <p>Створи Map з даними товарів.</p>
+                  <ul>
+                    <li>видали один елемент</li>
+                    <li>перевір розмір Map</li>
+                  </ul>
+                </div>
+
+                <div>
+                  <h3>Завдання 18</h3>
+                  <p>Є обʼєкт з багатьма властивостями.</p>
+                  <ul>
+                    <li>скопіюй його</li>
+                    <li>зміни одну властивість у копії</li>
+                  </ul>
+                </div>
+
+                <div>
+                  <h3>Завдання 19</h3>
+                  <p>Напиши функцію, яка:</p>
+                  <ul>
+                    <li>приймає масив</li>
+                    <li>повертає новий масив через spread</li>
+                  </ul>
+                </div>
+
+                <div>
+                  <h3>Завдання 20</h3>
+                  <p>Поясни (коментарем у коді):</p>
+                  <ul>
+                    <li>різницю між Set і масивом</li>
+                    <li>коли краще використовувати Map</li>
+                  </ul>
+                </div>
+
+                <h2 class="h1">
+                  Комбіновані завдання (ES6 + Functions + Arrays + DOM)
+                </h2>
+
+                <div>
+                  <h3>Завдання 1</h3>
+                  <p>Є кнопка та порожній список.</p>
+                  <ul>
+                    <li>при кліку створюй масив чисел</li>
+                    <li>виводь їх у DOM</li>
+                    <li>використай spread при оновленні</li>
+                  </ul>
+                </div>
+
+                <div>
+                  <h3>Завдання 2</h3>
+                  <p>Є input для введення імен.</p>
+                  <ul>
+                    <li>зберігай імена в Set</li>
+                    <li>виводь унікальний список в DOM</li>
+                  </ul>
+                </div>
+
+                <div>
+                  <h3>Завдання 3</h3>
+                  <p>Є форма з полями name та age.</p>
+                  <ul>
+                    <li>збирай дані через destructuring</li>
+                    <li>виводь обʼєкт у консоль</li>
+                  </ul>
+                </div>
+
+                <div>
+                  <h3>Завдання 4</h3>
+                  <p>Є масив чисел.</p>
+                  <ul>
+                    <li>напиши функцію з rest</li>
+                    <li>виводь суму у DOM</li>
+                  </ul>
+                </div>
+
+                <div>
+                  <h3>Завдання 5</h3>
+                  <p>Є кнопка "Додати користувача".</p>
+                  <ul>
+                    <li>зберігай користувачів у Map</li>
+                    <li>виводь список користувачів</li>
+                  </ul>
+                </div>
+
+                <div>
+                  <h3>Завдання 6</h3>
+                  <p>Є список товарів.</p>
+                  <ul>
+                    <li>видаляй дублікати через Set</li>
+                    <li>оновлюй DOM</li>
+                  </ul>
+                </div>
+
+                <div>
+                  <h3>Завдання 7</h3>
+                  <p>Є кнопка "Показати дані".</p>
+                  <ul>
+                    <li>використай destructuring в функції</li>
+                    <li>виведи дані в HTML</li>
+                  </ul>
+                </div>
+
+                <div>
+                  <h3>Завдання 8</h3>
+                  <p>Є input для чисел.</p>
+                  <ul>
+                    <li>збирай значення в масив</li>
+                    <li>обчислюй максимум через spread</li>
+                  </ul>
+                </div>
+
+                <div>
+                  <h3>Завдання 9</h3>
+                  <p>Є масив обʼєктів.</p>
+                  <ul>
+                    <li>оновлюй його копію через spread</li>
+                    <li>відображай у DOM</li>
+                  </ul>
+                </div>
+
+                <div>
+                  <h3>Завдання 10</h3>
+                  <p>Зроби невеликий сценарій:</p>
+                  <ul>
+                    <li>функція + масив</li>
+                    <li>Set або Map</li>
+                    <li>виведення результату в DOM</li>
+                  </ul>
+                </div>
               </div>
             </div>
             <div class="accordion-item">
               <div class="accordion-header">Рішення</div>
               <div class="accordion-content">
                 <p>
-                  <a href="#" class="link">Завдання 1-15</a>
+                  <a href="lesson8/index.html" target="_blank" class="link"
+                    >Рішення</a
+                  >
                 </p>
               </div>
             </div>
