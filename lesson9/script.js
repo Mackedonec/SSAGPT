@@ -179,3 +179,120 @@ Promise.all([userData, goodsData])
   .catch((err) => {
     outputAllPromises.textContent = "Error: " + err.message;
   });
+
+// Task 7
+
+const outputAwait = document.querySelector("#output-await");
+const outputPromise = document.querySelector("#output-promise");
+
+function testPromis() {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => resolve("Stop-stop-stop"), 1000);
+  });
+}
+
+testPromis().then((result) => {
+  outputPromise.textContent = result;
+  console.log(result);
+});
+
+async function testAwait() {
+  const promise = new Promise((resolve, reject) => {
+    setTimeout(() => resolve("Go-go-go"), 1500);
+  });
+  const result = await promise;
+  outputAwait.textContent = result;
+  console.log(result);
+}
+testAwait();
+
+// Task 8
+
+const outputError = document.querySelector("#output-error");
+
+async function func() {
+  const promis = new Promise((resolve, reject) => {
+    setTimeout(() => reject(new Error("Some error")), 1500);
+  });
+  try {
+    const result = await promis;
+    console.log(result);
+  } catch (error) {
+    outputError.textContent = error.message;
+  }
+}
+func();
+
+// Task 9
+
+// export async function getUser() {
+//   const userData = new Promise((resolve) => {
+//     setTimeout(() => {
+//       resolve({ name: "Bob", age: 22, role: "customer" });
+//     }, 2000);
+//   });
+
+//   return await userData;
+// }
+
+import { getUser } from "./script2.js";
+
+const outputModule = document.querySelector("#output-module");
+
+async function render() {
+  outputModule.textContent = "Loading...";
+  try {
+    const user = await getUser();
+
+    outputModule.textContent = `User: ${user.name}, Age: ${user.age}, Role: ${user.role}`;
+  } catch (error) {
+    outputModule.textContent = "Error loading user";
+  }
+}
+
+render();
+
+// Task 10
+
+const addNewUserBtn = document.querySelector("#add-new-user");
+const newUserName = document.querySelector("#new-user-name");
+const outputList = document.querySelector("#users-list");
+
+const usersMap = new Map();
+
+async function saveUser(id, name) {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      if (!name) {
+        reject(new Error("Fields cannot be empty!"));
+      } else {
+        resolve({ id, name });
+      }
+    }, 1000);
+  });
+}
+
+async function addNewUser() {
+  const name = newUserName.value.trim();
+  const id = Date.now();
+
+  try {
+    outputList.innerHTML += `<li>Saving ${name}...</li>`;
+
+    const savedUser = await saveUser(id, name);
+
+    usersMap.set(savedUser.id, savedUser.name);
+  } catch (error) {
+    alert("Error: " + error.message);
+  }
+  renderUsers();
+}
+
+function renderUsers() {
+  outputList.innerHTML = "";
+  usersMap.forEach((id, name) => {
+    outputList.innerHTML += `<li><strong>${name}</strong> has ${id}</li>`;
+  });
+}
+
+addNewUserBtn.addEventListener("click", addNewUser);
