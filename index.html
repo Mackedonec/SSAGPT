@@ -8860,21 +8860,371 @@ addNewUserBtn.addEventListener("click", addNewUser);
             <div class="accordion-item">
               <div class="accordion-header">Матеріал</div>
               <div class="accordion-content">
-                <p>Контент першого розділу акордіону.</p>
+                <h2 class="h1">Node.js: вступ, модулі, NPM та перший сервер</h2>
+
+                <section>
+                  <h2>1. Що таке Node.js</h2>
+
+                  <p>
+                    <strong>Node.js</strong> — це
+                    <strong>JavaScript runtime</strong>, створений у 2009 році.
+                  </p>
+
+                  <p>
+                    Це <strong>не мова</strong> і <strong>не фреймворк</strong>,
+                    а середовище виконання JavaScript поза браузером.
+                  </p>
+
+                  <ul>
+                    <li>
+                      працює на рушії <strong>V8</strong> (як у Google Chrome)
+                    </li>
+                    <li>
+                      написаний на <strong>C++</strong> та
+                      <strong>JavaScript</strong>
+                    </li>
+                    <li>працює на Windows, Linux, macOS</li>
+                  </ul>
+                </section>
+
+                <section>
+                  <h2>2. Основні особливості Node.js</h2>
+
+                  <ul>
+                    <li>
+                      <strong>Асинхронний та подієвий</strong> — неблокуючі API
+                    </li>
+                    <li><strong>Швидкий</strong> — завдяки V8</li>
+                    <li>
+                      <strong>Однопоточний</strong>, але добре масштабується
+                    </li>
+                    <li>
+                      <strong>Без буферизації</strong> — дані передаються
+                      чанками
+                    </li>
+                  </ul>
+                </section>
+
+                <section>
+                  <h2>3. Архітектура Node.js</h2>
+
+                  <p>
+                    Node.js ідеально підходить для
+                    <strong>I/O-інтенсивних</strong> застосунків.
+                  </p>
+
+                  <p>
+                    В основі лежить <strong>event loop</strong>, який дозволяє
+                    обробляти тисячі запитів без створення нових потоків.
+                  </p>
+                </section>
+
+                <section>
+                  <h2>4. Переваги та недоліки</h2>
+
+                  <h3>Переваги</h3>
+                  <ul>
+                    <li>швидкий</li>
+                    <li>масштабований</li>
+                    <li>велика екосистема</li>
+                  </ul>
+
+                  <h3>Недоліки</h3>
+                  <ul>
+                    <li>не підходить для CPU-важких задач</li>
+                    <li>складна асинхронна модель для новачків</li>
+                    <li>API може змінюватися</li>
+                  </ul>
+                </section>
+
+                <section>
+                  <h2>5. Де використовують Node.js</h2>
+
+                  <ul>
+                    <li>Back-end (REST, GraphQL, WebSocket)</li>
+                    <li>Front-end інструменти (Webpack, Vite)</li>
+                    <li>Desktop (Electron)</li>
+                    <li>CLI, боти, IoT</li>
+                  </ul>
+                </section>
+
+                <section>
+                  <h2>6. Модулі в Node.js</h2>
+
+                  <p>
+                    <strong>Модуль</strong> — це файл з кодом, який можна
+                    повторно використовувати.
+                  </p>
+
+                  <p>Node.js має вбудовані модулі, наприклад:</p>
+
+                  <pre><code>
+const url = require("url");
+  </code></pre>
+                </section>
+
+                <section>
+                  <h2>7. Популярні модулі</h2>
+
+                  <ul>
+                    <li>Express — web-фреймворк</li>
+                    <li>Socket.io — realtime</li>
+                    <li>Mongoose — MongoDB</li>
+                    <li>Nodemon — автоперезапуск сервера</li>
+                  </ul>
+                </section>
+
+                <section>
+                  <h2>8. NPM</h2>
+
+                  <p><strong>NPM</strong> — менеджер пакетів Node.js.</p>
+
+                  <pre><code>
+npm install express
+npm install -g nodemon
+  </code></pre>
+
+                  <p>
+                    Усі пакети зберігаються в папці <code>node_modules</code>.
+                  </p>
+                </section>
+
+                <section>
+                  <h2>9. package.json</h2>
+
+                  <p>
+                    Файл <code>package.json</code> містить інформацію про проєкт
+                    та залежності.
+                  </p>
+
+                  <pre><code>
+{
+  "name": "node-sample",
+  "version": "1.0.0",
+  "dependencies": {
+    "express": "^4.18.0"
+  }
+}
+  </code></pre>
+                </section>
+
+                <section>
+                  <h2>10. Встановлення Node.js</h2>
+
+                  <ol>
+                    <li>
+                      Завантажити з <a href="https://nodejs.org">nodejs.org</a>
+                    </li>
+                    <li>Встановити</li>
+                    <li>Перевірити версію</li>
+                  </ol>
+
+                  <pre><code>
+node -v
+npm -v
+  </code></pre>
+                </section>
+
+                <section>
+                  <h2>11. Перша Node.js програма</h2>
+
+                  <pre><code>
+console.log("Test message!");
+  </code></pre>
+
+                  <p>Запуск:</p>
+
+                  <pre><code>
+node test.js
+  </code></pre>
+                </section>
+
+                <section>
+                  <h2>12. HTTP сервер</h2>
+
+                  <pre><code>
+const http = require("http");
+
+http.createServer(function (request, response) {
+  response.writeHead(200, { "Content-Type": "text/plain" });
+  response.end("Testing NodeJS server");
+}).listen(8000);
+
+console.log("Server running at http://localhost:8000");
+  </code></pre>
+                </section>
+
+                <section>
+                  <h2>13. Request та Response</h2>
+
+                  <p><strong>request</strong> містить інформацію про запит:</p>
+
+                  <ul>
+                    <li>method</li>
+                    <li>url</li>
+                    <li>headers</li>
+                  </ul>
+
+                  <p><strong>response</strong> керує відповіддю сервера.</p>
+                </section>
+
+                <section>
+                  <h2>14. Корисні посилання</h2>
+
+                  <ul>
+                    <li><a href="https://nodejs.org">nodejs.org</a></li>
+                    <li>
+                      <a href="https://www.w3schools.com/nodejs/"
+                        >W3Schools Node.js</a
+                      >
+                    </li>
+                    <li>
+                      <a href="https://www.tutorialspoint.com/nodejs"
+                        >TutorialsPoint</a
+                      >
+                    </li>
+                  </ul>
+                </section>
               </div>
             </div>
             <div class="accordion-item">
               <div class="accordion-header">Завдання</div>
               <div class="accordion-content">
-                <p>Контент другого розділу акордіону.</p>
+                <h2>Практичні завдання: Node.js, модулі, NPM, HTTP-сервер</h2>
+
+                <div>
+                  <h3>Завдання 1. Перевірка встановлення Node.js</h3>
+                  <p>Переконайся, що Node.js успішно встановлений.</p>
+                  <ul>
+                    <li>відкрий термінал або командний рядок</li>
+                    <li>виконай команду <code>node -v</code></li>
+                    <li>виконай команду <code>npm -v</code></li>
+                    <li>
+                      поясни (коментарем), для чого потрібні Node.js і NPM
+                    </li>
+                  </ul>
+                </div>
+
+                <div>
+                  <h3>Завдання 2. Перша Node.js програма</h3>
+                  <p>Створи перший JavaScript-файл для Node.js.</p>
+                  <ul>
+                    <li>створи файл <code>app.js</code></li>
+                    <li>
+                      виведи в консоль повідомлення
+                      <strong>"Hello from Node.js"</strong>
+                    </li>
+                    <li>запусти файл через команду <code>node app.js</code></li>
+                    <li>
+                      поясни різницю між запуском JS у браузері та в Node.js
+                    </li>
+                  </ul>
+                </div>
+
+                <div>
+                  <h3>Завдання 3. Робота з модулями</h3>
+                  <p>Попрактикуйся у використанні модулів Node.js.</p>
+                  <ul>
+                    <li>створи окремий файл з функцією додавання двох чисел</li>
+                    <li>
+                      експортуй цю функцію через <code>module.exports</code>
+                    </li>
+                    <li>
+                      імпортуй її в головний файл через <code>require</code>
+                    </li>
+                    <li>виведи результат роботи функції в консоль</li>
+                  </ul>
+                </div>
+
+                <div>
+                  <h3>Завдання 4. HTTP-сервер</h3>
+                  <p>Створи простий HTTP-сервер на Node.js.</p>
+                  <ul>
+                    <li>підключи вбудований модуль <code>http</code></li>
+                    <li>
+                      створи сервер, який слухає порт <strong>3000</strong>
+                    </li>
+                    <li>
+                      у відповідь сервер має повертати текст
+                      <strong>"Node.js server works"</strong>
+                    </li>
+                    <li>відкрий сервер у браузері та перевір результат</li>
+                  </ul>
+                </div>
+
+                <div>
+                  <h3>Завдання 5. Request та Response</h3>
+                  <p>Попрацюй з обʼєктами запиту та відповіді.</p>
+                  <ul>
+                    <li>виведи в консоль метод HTTP-запиту</li>
+                    <li>виведи URL, який запитує користувач</li>
+                    <li>зміни <code>Content-Type</code> відповіді</li>
+                    <li>
+                      поясни, за що відповідають обʼєкти <code>request</code> і
+                      <code>response</code>
+                    </li>
+                  </ul>
+                </div>
               </div>
             </div>
             <div class="accordion-item">
               <div class="accordion-header">Рішення</div>
               <div class="accordion-content">
                 <p>
-                  <a href="#" class="link">Завдання 1-15</a>
+                  <a href="#" class="link">Рішення</a>
                 </p>
+                <pre><code>
+// Task 1
+
+// Node.js — це середовище виконання, яке дозволяє запускати JavaScript-код поза браузером
+// (наприклад, на твоєму комп'ютері або сервері). Без нього JS був би обмежений лише вебсторінками.
+
+// NPM (Node Package Manager) — це гігантська "бібліотека" та менеджер пакетів. Він дозволяє програмістам
+// завантажувати готові інструменти, модулі та фреймворки (як-от React або Express), щоб не писати все з нуля.
+
+// Task 2
+
+// Основна різниця полягає в тому, що браузер працює з інтерфейсом користувача та DOM, тоді як Node.js має доступ
+// до системних ресурсів, таких як файлова система та мережеві порти, але не має доступу до вікна браузера та HTML-елементів.
+
+// Task 3
+
+// app.js
+// console.log("Hello from Node.js");
+// const sum = (a = 2, b = 3) => a + b;
+// module.exports = sum;
+
+const sum = require("./app.js");
+const result = sum(11, 3);
+console.log(result);
+
+// Task 4 & 5
+const http = require("http");
+
+http
+  .createServer((request, response) => {
+    // response.writeHead(200, { "Content-Type": "text/plain" });
+    // response.write("Node.js server works");
+    console.log(`Метод запиту: ${request.method}`);
+    console.log(`Запитаний URL: ${request.url}`);
+    response.writeHead(200, { "Content-Type": "text/html; charset=utf-8" });
+    response.write("<h1>Node.js server works</h1>");
+    response.write(
+      `<p>Ви використали метод: ${request.method} для шляху: ${request.url}</p>`,
+    );
+    response.end();
+  })
+  .listen(3000);
+console.log("Server running at http://127.0.0.1:3000/");
+
+// request (req): Це об'єкт-потік, який містить усю інформацію про вхідний запит від клієнта (браузера).
+//  Через нього ми дізнаємося, яку сторінку хоче відкрити користувач (url), який метод використовує
+// (GET, POST), які дані передає та які в нього заголовки (наприклад, тип браузера).
+
+// response (res): Це об'єкт-потік, який ми використовуємо для формування відповіді. За допомогою
+// нього ми встановлюємо статус-код (наприклад, 200 OK або 404 Not Found), типи контенту та, власне,
+// відправляємо дані (текст, HTML або JSON) назад у браузер.
+                </code></pre>
               </div>
             </div>
           </div>
@@ -8884,13 +9234,372 @@ addNewUserBtn.addEventListener("click", addNewUser);
             <div class="accordion-item">
               <div class="accordion-header">Матеріал</div>
               <div class="accordion-content">
-                <p>Контент першого розділу акордіону.</p>
+                <h2 class="h1">
+                  Взаємодія з сервером: HTTP, AJAX та Fetch API
+                </h2>
+
+                <section>
+                  <h2>1. Взаємодія браузера з сервером</h2>
+
+                  <p>
+                    Будь-який вебзастосунок працює за моделлю
+                    <strong>клієнт – сервер</strong>. Браузер (клієнт) надсилає
+                    запит, сервер обробляє його та повертає відповідь.
+                  </p>
+
+                  <p>
+                    Для цієї взаємодії використовується протокол
+                    <strong>HTTP</strong>.
+                  </p>
+                </section>
+
+                <section>
+                  <h2>2. HTTP — що це таке</h2>
+
+                  <p>
+                    <strong>HTTP (HyperText Transfer Protocol)</strong> — це
+                    прикладний протокол для передавання гіпертекстових
+                    документів (HTML) між браузером і сервером.
+                  </p>
+
+                  <ul>
+                    <li>працює за моделлю клієнт–сервер</li>
+                    <li>
+                      є <strong>stateless</strong> (сервер не зберігає стан
+                      клієнта)
+                    </li>
+                    <li>кожен запит обробляється незалежно</li>
+                  </ul>
+                </section>
+
+                <section>
+                  <h2>3. Структура HTTP-запиту</h2>
+
+                  <p>HTTP-запит складається з:</p>
+
+                  <ul>
+                    <li>методу (GET, POST, PUT, DELETE тощо)</li>
+                    <li>URL (адреси ресурсу)</li>
+                    <li>заголовків (headers)</li>
+                    <li>тіла запиту (body, не завжди)</li>
+                  </ul>
+                </section>
+
+                <section>
+                  <h2>4. Структура HTTP-відповіді</h2>
+
+                  <p>HTTP-відповідь містить:</p>
+
+                  <ul>
+                    <li>код статусу (200, 404, 500…)</li>
+                    <li>заголовки</li>
+                    <li>тіло відповіді (HTML, JSON, текст)</li>
+                  </ul>
+                </section>
+
+                <section>
+                  <h2>5. HTTP-методи</h2>
+
+                  <ul>
+                    <li><code>GET</code> — отримання даних</li>
+                    <li><code>POST</code> — надсилання даних</li>
+                    <li><code>PUT</code> — повне оновлення ресурсу</li>
+                    <li><code>PATCH</code> — часткове оновлення</li>
+                    <li><code>DELETE</code> — видалення</li>
+                    <li>
+                      <code>OPTIONS</code> — інформація про можливості сервера
+                    </li>
+                  </ul>
+                </section>
+
+                <section>
+                  <h2>6. HTTP статус-коди</h2>
+
+                  <ul>
+                    <li><strong>1xx</strong> — інформаційні</li>
+                    <li><strong>2xx</strong> — успішні</li>
+                    <li><strong>3xx</strong> — перенаправлення</li>
+                    <li><strong>4xx</strong> — помилки клієнта</li>
+                    <li><strong>5xx</strong> — помилки сервера</li>
+                  </ul>
+                </section>
+
+                <section>
+                  <h2>7. Ідемпотентність HTTP-методів</h2>
+
+                  <p>
+                    <strong>Ідемпотентний метод</strong> — це метод, повторний
+                    виклик якого не змінює стан сервера.
+                  </p>
+
+                  <p>Ідемпотентні методи:</p>
+                  <ul>
+                    <li>GET</li>
+                    <li>PUT</li>
+                    <li>DELETE</li>
+                    <li>HEAD</li>
+                  </ul>
+
+                  <p>
+                    Метод <code>POST</code> — <strong>не ідемпотентний</strong>.
+                  </p>
+                </section>
+
+                <section>
+                  <h2>8. Stateless протокол</h2>
+
+                  <p>
+                    HTTP — <strong>stateless</strong>, тобто сервер не памʼятає
+                    попередні запити клієнта.
+                  </p>
+
+                  <p>
+                    Кожен запит має містити всю необхідну інформацію для
+                    обробки.
+                  </p>
+                </section>
+
+                <section>
+                  <h2>9. AJAX</h2>
+
+                  <p>
+                    <strong>AJAX (Asynchronous JavaScript and XML)</strong> — це
+                    підхід, який дозволяє отримувати дані з сервера
+                    <strong>без перезавантаження сторінки</strong>.
+                  </p>
+
+                  <p>Переваги AJAX:</p>
+                  <ul>
+                    <li>швидша взаємодія</li>
+                    <li>оновлення частини сторінки</li>
+                    <li>кращий UX</li>
+                  </ul>
+                </section>
+
+                <section>
+                  <h2>10. Технології AJAX</h2>
+
+                  <ul>
+                    <li><strong>JavaScript</strong> — логіка</li>
+                    <li><strong>DOM</strong> — оновлення сторінки</li>
+                    <li><strong>CSS</strong> — стилі</li>
+                    <li><strong>XMLHttpRequest</strong> — обмін з сервером</li>
+                  </ul>
+                </section>
+
+                <section>
+                  <h2>11. XMLHttpRequest</h2>
+
+                  <pre><code>
+const xhr = new XMLHttpRequest();
+
+xhr.open("GET", "data.json", true);
+
+xhr.onreadystatechange = function () {
+  if (xhr.readyState === 4 && xhr.status === 200) {
+    console.log(xhr.responseText);
+  }
+};
+
+xhr.send();
+  </code></pre>
+                </section>
+
+                <section>
+                  <h2>12. ReadyState</h2>
+
+                  <ul>
+                    <li>0 — UNSENT</li>
+                    <li>1 — OPENED</li>
+                    <li>2 — HEADERS_RECEIVED</li>
+                    <li>3 — LOADING</li>
+                    <li>4 — DONE</li>
+                  </ul>
+                </section>
+
+                <section>
+                  <h2>13. Fetch API</h2>
+
+                  <p>
+                    <strong>Fetch API</strong> — сучасна альтернатива
+                    XMLHttpRequest, побудована на Promise.
+                  </p>
+
+                  <pre><code>
+fetch("https://api.github.com/users/octocat")
+  .then(response => response.json())
+  .then(data => console.log(data));
+  </code></pre>
+                </section>
+
+                <section>
+                  <h2>14. Fetch API з async / await</h2>
+
+                  <pre><code>
+async function loadUser() {
+  const response = await fetch("https://api.github.com/users/octocat");
+  const data = await response.json();
+  console.log(data);
+}
+
+loadUser();
+  </code></pre>
+                </section>
+
+                <section>
+                  <h2>15. POST-запит через Fetch</h2>
+
+                  <pre><code>
+fetch("https://jsonplaceholder.typicode.com/posts", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json"
+  },
+  body: JSON.stringify({
+    title: "Post title",
+    body: "Post content",
+    userId: 1
+  })
+})
+.then(response => response.json())
+.then(data => console.log(data));
+  </code></pre>
+                </section>
+
+                <section>
+                  <h2>16. Same Origin Policy</h2>
+
+                  <p>
+                    Браузери обмежують AJAX-запити між різними доменами з
+                    міркувань безпеки.
+                  </p>
+
+                  <p>
+                    Для обходу обмежень використовують <strong>CORS</strong> або
+                    <strong>JSONP</strong>.
+                  </p>
+                </section>
+
+                <section>
+                  <h2>17. Корисні посилання</h2>
+
+                  <ul>
+                    <li>
+                      <a
+                        href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Overview"
+                        >MDN HTTP</a
+                      >
+                    </li>
+                    <li>
+                      <a href="https://javascript.info/fetch"
+                        >javascript.info — fetch</a
+                      >
+                    </li>
+                    <li>
+                      <a href="https://javascript.info/xmlhttprequest"
+                        >javascript.info — XHR</a
+                      >
+                    </li>
+                    <li>
+                      <a href="https://www.w3schools.com/js/js_ajax_intro.asp"
+                        >W3Schools AJAX</a
+                      >
+                    </li>
+                  </ul>
+                </section>
               </div>
             </div>
             <div class="accordion-item">
               <div class="accordion-header">Завдання</div>
               <div class="accordion-content">
-                <p>Контент другого розділу акордіону.</p>
+                <h2 class="h1">Практичні завдання: AJAX та Fetch API</h2>
+
+                <section>
+                  <h3>Завдання 1. Перший Fetch-запит</h3>
+                  <p>
+                    Створи HTML-сторінку з кнопкою <strong>Load Users</strong>.
+                  </p>
+                  <p>При кліку на кнопку потрібно:</p>
+                  <ul>
+                    <li>
+                      зробити GET-запит за адресою
+                      <code>https://jsonplaceholder.typicode.com/users</code>
+                    </li>
+                    <li>отримати масив користувачів</li>
+                    <li>
+                      вивести імена користувачів у вигляді списку
+                      (<code>&lt;ul&gt;</code>)
+                    </li>
+                  </ul>
+                  <p>Використовуй <strong>Fetch API</strong>.</p>
+                </section>
+
+                <section>
+                  <h3>Завдання 2. Fetch + обробка помилок</h3>
+                  <p>На основі попереднього завдання:</p>
+                  <ul>
+                    <li>перевіряй <code>response.ok</code></li>
+                    <li>
+                      якщо сервер повернув помилку — виведи повідомлення
+                      <em>"Помилка завантаження даних"</em>
+                    </li>
+                    <li>у разі успіху — покажи дані</li>
+                  </ul>
+                  <p>Використовуй <code>.catch()</code> для обробки помилок.</p>
+                </section>
+
+                <section>
+                  <h3>Завдання 3. POST-запит через Fetch</h3>
+                  <p>Створи форму з полями:</p>
+                  <ul>
+                    <li>name</li>
+                    <li>email</li>
+                  </ul>
+                  <p>При відправці форми:</p>
+                  <ul>
+                    <li>відміни стандартну поведінку форми</li>
+                    <li>
+                      зроби POST-запит на
+                      <code>https://jsonplaceholder.typicode.com/posts</code>
+                    </li>
+                    <li>передай дані у форматі JSON</li>
+                    <li>виведи відповідь сервера на сторінку</li>
+                  </ul>
+                </section>
+
+                <section>
+                  <h3>Завдання 4. XMLHttpRequest (класичний AJAX)</h3>
+                  <p>
+                    Реалізуй GET-запит за допомогою
+                    <strong>XMLHttpRequest</strong>:
+                  </p>
+                  <ul>
+                    <li>
+                      URL:
+                      <code>https://jsonplaceholder.typicode.com/posts</code>
+                    </li>
+                    <li>виведи перші 5 заголовків постів</li>
+                  </ul>
+                  <p>Порівняй синтаксис із Fetch API.</p>
+                </section>
+
+                <section>
+                  <h3>Завдання 5. Fetch + async / await</h3>
+                  <p>Перепиши будь-яке попереднє завдання, використовуючи:</p>
+                  <ul>
+                    <li><code>async / await</code></li>
+                    <li><code>try / catch</code></li>
+                  </ul>
+                  <p>Зверни увагу на читабельність коду.</p>
+                </section>
+
+                <section>
+                  <h3>Додатково (необовʼязково)</h3>
+                  <p>
+                    Додай індикатор завантаження (<em>Loading...</em>) під час
+                    виконання запиту.
+                  </p>
+                </section>
               </div>
             </div>
             <div class="accordion-item">
