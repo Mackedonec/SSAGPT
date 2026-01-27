@@ -38,6 +38,10 @@ h1,
   font-size: 36px;
 }
 
+ul {
+  list-style: none;
+}
+
 .at5-li,
 .at10-li {
   list-style: none;
