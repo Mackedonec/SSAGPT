@@ -9777,21 +9777,659 @@ loadPostsBtn.addEventListener("click", () => {
             <div class="accordion-item">
               <div class="accordion-header">Матеріал</div>
               <div class="accordion-content">
-                <p>Контент першого розділу акордіону.</p>
+                <h2 class="h1">TypeScript: вступ, базові типи та типізація</h2>
+
+                <section>
+                  <h2>1. Що таке TypeScript</h2>
+                  <p>
+                    <strong>TypeScript</strong> — це надмножина JavaScript, яка
+                    додає статичну типізацію.
+                  </p>
+                  <p>
+                    JavaScript є <strong>динамічно типізованою</strong> мовою,
+                    тому типи змінних можуть змінюватися під час виконання
+                    програми.
+                  </p>
+                  <p>
+                    TypeScript дозволяє знаходити помилки
+                    <strong>на етапі написання коду</strong>, а не під час
+                    виконання.
+                  </p>
+                </section>
+
+                <section>
+                  <h2>2. Типові проблеми JavaScript</h2>
+                  <p>У JavaScript тип змінної може змінюватися без помилки:</p>
+                  <pre><code>let id = 1;     // number
+id = "Alex";  // string
+id = true;    // boolean</code></pre>
+                  <p>
+                    👉 Такі ситуації у великих проєктах призводять до
+                    неочікуваних багів.
+                  </p>
+                </section>
+
+                <section>
+                  <h2>3. Як TypeScript вирішує ці проблеми</h2>
+                  <p>
+                    TypeScript використовує <strong>статичну типізацію</strong>.
+                  </p>
+                  <ul>
+                    <li>виявлення помилок до запуску коду</li>
+                    <li>покращені підказки в редакторі</li>
+                    <li>самодокументований код</li>
+                  </ul>
+                </section>
+
+                <section>
+                  <h2>4. Процес розробки з TypeScript</h2>
+                  <p>Етапи роботи:</p>
+                  <ul>
+                    <li>написання коду на TypeScript</li>
+                    <li>компіляція</li>
+                    <li>отримання чистого JavaScript</li>
+                  </ul>
+                </section>
+
+                <section>
+                  <h2>5. Переваги та недоліки TypeScript</h2>
+                  <p><strong>Переваги:</strong></p>
+                  <ul>
+                    <li>менше помилок</li>
+                    <li>краще масштабування</li>
+                    <li>зручна командна робота</li>
+                  </ul>
+                  <p><strong>Недолік:</strong></p>
+                  <ul>
+                    <li>ускладнення маленьких проєктів</li>
+                  </ul>
+                </section>
+
+                <section>
+                  <h2>6. Встановлення TypeScript</h2>
+                  <pre><code>npm install -g typescript</code></pre>
+                  <p>👉 Потрібен встановлений Node.js.</p>
+                </section>
+
+                <section>
+                  <h2>7. Компіляція TypeScript</h2>
+                  <pre><code>tsc app.ts
+tsc --init</code></pre>
+                  <p>
+                    👉 Файл <code>tsconfig.json</code> визначає налаштування
+                    компілятора.
+                  </p>
+                </section>
+
+                <section>
+                  <h2>8. Оголошення типів</h2>
+                  <pre><code>let message: string = "Hello";
+let count: number = 10;
+let isActive: boolean = true;</code></pre>
+                </section>
+
+                <section>
+                  <h2>9. null та undefined</h2>
+                  <pre><code>let n: null = null;
+let u: undefined = undefined;</code></pre>
+                  <p>👉 У TypeScript ці типи чітко контролюються.</p>
+                </section>
+
+                <section>
+                  <h2>10. Тип any</h2>
+                  <pre><code>let user: any = 1;
+user = "Viktor";
+user = true;</code></pre>
+                  <p>👉 Використання <code>any</code> не рекомендоване.</p>
+                </section>
+
+                <section>
+                  <h2>11. Типізація аргументів функцій</h2>
+                  <pre><code>function sum(a: number, b: number): number {
+  return a + b;
+}</code></pre>
+                </section>
+
+                <section>
+                  <h2>12. Тип void</h2>
+                  <pre><code>function showData(data: string): void {
+  console.log(data);
+}</code></pre>
+                </section>
+
+                <section>
+                  <h2>13. Тип never</h2>
+                  <pre><code>function throwError(message: string): never {
+  throw new Error(message);
+}</code></pre>
+                </section>
+
+                <section>
+                  <h2>14. Типізація обʼєктів</h2>
+                  <pre><code>let address: { street: string; house: number } = {
+  street: "Franko",
+  house: 22
+};</code></pre>
+                </section>
+
+                <section>
+                  <h2>15. Типізація масивів</h2>
+                  <pre><code>const ages: number[] = [18, 25, 30];
+const cities: string[] = ["Lviv", "Kyiv"]; </code></pre>
+                </section>
+
+                <section>
+                  <h2>16. Деструктуризація масивів</h2>
+                  <pre><code>const cities: string[] = ["Lviv", "Kyiv", "Dnipro"];
+const [first, second] = cities;</code></pre>
+                </section>
+
+                <section>
+                  <h2>17. Кортежі (Tuple)</h2>
+                  <pre><code>let data: [string, number, boolean] = ["student", 1, true];</code></pre>
+                </section>
+
+                <section>
+                  <h2>18. Enum</h2>
+                  <pre><code>enum Fruits {
+  Apple,
+  Banana,
+  Orange
+}</code></pre>
+                </section>
+
+                <section>
+                  <h2>19. Union типи</h2>
+                  <pre><code>let id: number | string;
+id = 10;
+id = "10";</code></pre>
+                </section>
+
+                <section>
+                  <h2>20. Type Narrowing</h2>
+                  <pre><code>function print(value: string | number): void {
+  if (typeof value === "string") {
+    console.log(value.toUpperCase());
+  } else {
+    console.log(value.toFixed());
+  }
+}</code></pre>
+                </section>
+
+                <section>
+                  <h2>21. Літеральні типи</h2>
+                  <pre><code>function startServer(port: 8000 | 8001): void {
+  console.log(port);
+}</code></pre>
+                </section>
+
+                <section>
+                  <h2>22. Type Alias</h2>
+                  <pre><code>type UserId = number | string;
+
+function showUser(id: UserId): void {
+console.log(id);
+}</code></pre>
+                </section>
               </div>
             </div>
             <div class="accordion-item">
               <div class="accordion-header">Завдання</div>
               <div class="accordion-content">
-                <p>Контент другого розділу акордіону.</p>
+                <h2>Практичні завдання: TypeScript — вступ та базові типи</h2>
+
+                <div>
+                  <h3>Завдання 1. Оголошення типів</h3>
+                  <p>Оголоси змінні з явним зазначенням типів.</p>
+                  <ul>
+                    <li>
+                      змінна <code>userName</code> типу <code>string</code>
+                    </li>
+                    <li>змінна <code>age</code> типу <code>number</code></li>
+                    <li>
+                      змінна <code>isAdmin</code> типу <code>boolean</code>
+                    </li>
+                    <li>присвой коректні значення</li>
+                  </ul>
+                </div>
+
+                <div>
+                  <h3>Завдання 2. Помилка типів</h3>
+                  <p>Створи змінну з типом <code>number</code>.</p>
+                  <ul>
+                    <li>присвой їй число</li>
+                    <li>спробуй присвоїти рядок</li>
+                    <li>подивись, яку помилку покаже TypeScript</li>
+                  </ul>
+                </div>
+
+                <div>
+                  <h3>Завдання 3. Тип any</h3>
+                  <p>Продемонструй роботу типу <code>any</code>.</p>
+                  <ul>
+                    <li>створи змінну з типом <code>any</code></li>
+                    <li>присвой число, рядок і boolean</li>
+                    <li>зроби висновок, чому цей тип небажаний</li>
+                  </ul>
+                </div>
+
+                <div>
+                  <h3>Завдання 4. Типізація аргументів функції</h3>
+                  <p>Створи функцію <code>sum</code>.</p>
+                  <ul>
+                    <li>два аргументи типу <code>number</code></li>
+                    <li>функція повертає їх суму</li>
+                    <li>виклич функцію з коректними даними</li>
+                  </ul>
+                </div>
+
+                <div>
+                  <h3>Завдання 5. Тип повернення функції</h3>
+                  <p>Явно задай тип значення, яке повертає функція.</p>
+                  <ul>
+                    <li>функція повертає <code>string</code></li>
+                    <li>спробуй повернути число</li>
+                    <li>проаналізуй помилку компіляції</li>
+                  </ul>
+                </div>
+
+                <div>
+                  <h3>Завдання 6. Тип void</h3>
+                  <p>Створи функцію, яка нічого не повертає.</p>
+                  <ul>
+                    <li>функція виводить повідомлення в консоль</li>
+                    <li>тип повернення — <code>void</code></li>
+                    <li>спробуй повернути значення і подивись на помилку</li>
+                  </ul>
+                </div>
+
+                <div>
+                  <h3>Завдання 7. Тип never</h3>
+                  <p>Продемонструй використання типу <code>never</code>.</p>
+                  <ul>
+                    <li>створи функцію, яка завжди кидає помилку</li>
+                    <li>вкажи тип повернення <code>never</code></li>
+                    <li>поясни, чому функція нічого не повертає</li>
+                  </ul>
+                </div>
+
+                <div>
+                  <h3>Завдання 8. Типізація обʼєкта</h3>
+                  <p>Опиши тип для обʼєкта адреси.</p>
+                  <ul>
+                    <li>
+                      властивості: <code>street</code> (string),
+                      <code>house</code> (number)
+                    </li>
+                    <li>створи обʼєкт з цими даними</li>
+                    <li>спробуй змінити тип властивості</li>
+                  </ul>
+                </div>
+
+                <div>
+                  <h3>Завдання 9. Типізація масиву</h3>
+                  <p>Створи масив з числами.</p>
+                  <ul>
+                    <li>тип масиву — <code>number[]</code></li>
+                    <li>додай кілька чисел</li>
+                    <li>спробуй додати рядок</li>
+                  </ul>
+                </div>
+
+                <div>
+                  <h3>Завдання 10. Двовимірний масив</h3>
+                  <p>Опиши двовимірний масив чисел.</p>
+                  <ul>
+                    <li>тип <code>number[][]</code></li>
+                    <li>заповни даними</li>
+                    <li>отримай доступ до одного з елементів</li>
+                  </ul>
+                </div>
+
+                <div>
+                  <h3>Завдання 11. Tuple (кортеж)</h3>
+                  <p>Створи кортеж з фіксованою структурою.</p>
+                  <ul>
+                    <li>
+                      типи: <code>string</code>, <code>number</code>,
+                      <code>boolean</code>
+                    </li>
+                    <li>заповни значеннями</li>
+                    <li>спробуй порушити порядок типів</li>
+                  </ul>
+                </div>
+
+                <div>
+                  <h3>Завдання 12. Enum</h3>
+                  <p>Створи enum для ролей користувача.</p>
+                  <ul>
+                    <li>ADMIN, USER, GUEST</li>
+                    <li>використай enum у змінній</li>
+                    <li>виведи значення в консоль</li>
+                  </ul>
+                </div>
+
+                <div>
+                  <h3>Завдання 13. Union типи</h3>
+                  <p>Використай обʼєднання типів.</p>
+                  <ul>
+                    <li>
+                      змінна може бути <code>string</code> або
+                      <code>number</code>
+                    </li>
+                    <li>присвой обидва варіанти по черзі</li>
+                    <li>проаналізуй переваги</li>
+                  </ul>
+                </div>
+
+                <div>
+                  <h3>Завдання 14. Type Narrowing</h3>
+                  <p>Реалізуй функцію з перевіркою типу.</p>
+                  <ul>
+                    <li>аргумент: <code>string | number</code></li>
+                    <li>якщо string — переведи у верхній регістр</li>
+                    <li>якщо number — округли</li>
+                  </ul>
+                </div>
+
+                <div>
+                  <h3>Завдання 15. Type Alias</h3>
+                  <p>Створи псевдонім типу.</p>
+                  <ul>
+                    <li>alias для <code>number | string</code></li>
+                    <li>використай його у функції</li>
+                    <li>передай різні значення</li>
+                  </ul>
+                </div>
               </div>
             </div>
             <div class="accordion-item">
               <div class="accordion-header">Рішення</div>
               <div class="accordion-content">
                 <p>
-                  <a href="#" class="link">Завдання 1-15</a>
+                  <a href="lesson12/index.html" target="_blank" class="link"
+                    >Рішення</a
+                  >
                 </p>
+                <pre><code>
+                  script.ts
+// Task 1
+
+const userName: string = "Bob";
+const age: number = 22;
+const isAdmin: boolean = true;
+
+console.log(`${userName} is ${age}'s old and he is admin? it's ${isAdmin}`);
+
+// Task 2
+
+let myNum: number = 15;
+// myNum = "22";
+// Error: Type 'string' is not assignable to type 'number'.
+
+// Task 3
+
+let myAny: any = "15";
+myAny = 22;
+myAny = true;
+// з питом any код написаний в ts стає звичайним js, тобто ts втрачає сенс.
+
+// Task 4
+
+function sum(num1: number, num2: number) {
+  return num1 + num2;
+}
+
+console.log(sum(2, 5));
+
+// Task 5
+
+function returnString(str: string): string {
+  return str;
+}
+
+console.log(returnString("22"));
+// console.log(returnString(22));
+// Error: Argument of type 'number' is not assignable to parameter of type 'string'.
+
+// Task 6
+
+function returnVoid(str: string): void {
+  console.log(str);
+  // return str;
+  // Error: Type 'string' is not assignable to type 'void'.
+}
+
+// Task 7
+
+function createError(message: string): never {
+  throw new Error(message);
+}
+
+// try {
+//   createError("Some critical error");
+// } catch (error) {
+//   console.error("Catch:", error.message);
+// }
+// Error: 'error' is of type 'unknown'.
+
+// Task 8
+
+let myObj: { street: string; house: number } = {
+  street: "Verhovinnaya",
+  house: 22,
+};
+
+console.log(myObj);
+myObj.house = 32;
+console.log(myObj);
+// myObj.house = "32";
+// Error: Type 'string' is not assignable to type 'number'.
+
+// Task 9
+
+let myArr: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+console.log(myArr);
+myArr.push(10);
+console.log(myArr);
+myArr.splice(Math.floor(myArr.length / 2), 0, 55);
+console.log(myArr);
+// myArr.splice(0, 1, "55");
+// Error: Argument of type 'string' is not assignable to parameter of type 'number'.
+
+// Task 10
+
+let myDoubleArr: number[][] = [
+  [1, 3, 5, 7],
+  [2, 4, 6, 8],
+];
+
+console.log(myDoubleArr[0]);
+let flatArr = myDoubleArr.flat();
+console.log(flatArr[6]);
+
+// Task 11
+
+let tuple: [string, number, boolean] = ["student", 1, true];
+// let tuple1: [string, number, boolean] = ["student2", 2, "economist"];
+// Error: Type 'string' is not assignable to type 'boolean'.
+
+// tuple.push("university");
+// console.log(tuple);
+// console.log(tuple[3]);
+// Error: Tuple type '[string, number, boolean]' of length '3' has no element at index '3'.
+
+// Task 12
+
+enum role {
+  ADMIN = 1,
+  USER = 15,
+  GUEST = 125,
+}
+
+const admin = role.ADMIN;
+const user = role.USER;
+const guest = role.GUEST;
+console.log(admin);
+console.log(user);
+console.log(guest);
+
+// Task 13
+
+let myData: string | number = "33";
+myData = 33;
+// myData = true;
+// Error: Type 'boolean' is not assignable to type 'string | number'.
+// Добзоляє змінювати тип даних на один з заздалегіть визначених.
+// Дає деяку гнучкість коду але не втрачає захисту від "шалених ручок"
+
+// Task 14
+
+function getData(data: string | number) {
+  if (typeof data === "string") {
+    return data.toUpperCase();
+  } else {
+    return data.toFixed();
+  }
+}
+
+console.log(getData("Twenty and one"));
+console.log(getData(20.1));
+
+// Task 15
+
+type testAlias = number | string;
+
+function getData2(data: testAlias) {
+  if (typeof data === "string") {
+    return data.toUpperCase();
+  } else {
+    return data.toFixed();
+  }
+}
+
+console.log(getData2("Twenty and two"));
+console.log(getData2(20.2));
+                    script.js
+                 "use strict";
+// Task 1
+const userName = "Bob";
+const age = 22;
+const isAdmin = true;
+console.log(`${userName} is ${age}'s old and he is admin? it's ${isAdmin}`);
+// Task 2
+let myNum = 15;
+// myNum = "22";
+// Error: Type 'string' is not assignable to type 'number'.
+// Task 3
+let myAny = "15";
+myAny = 22;
+myAny = true;
+// з питом any код написаний в ts стає звичайним js, тобто ts втрачає сенс.
+// Task 4
+function sum(num1, num2) {
+  return num1 + num2;
+}
+console.log(sum(2, 5));
+// Task 5
+function returnString(str) {
+  return str;
+}
+console.log(returnString("22"));
+// console.log(returnString(22));
+// Error: Argument of type 'number' is not assignable to parameter of type 'string'.
+// Task 6
+function returnVoid(str) {
+  console.log(str);
+  // return str;
+  // Error: Type 'string' is not assignable to type 'void'.
+}
+// Task 7
+function createError(message) {
+  throw new Error(message);
+}
+// try {
+//   createError("Some critical error");
+// } catch (error) {
+//   console.error("Catch:", error.message);
+// }
+// Error: 'error' is of type 'unknown'.
+// Task 8
+let myObj = {
+  street: "Verhovinnaya",
+  house: 22,
+};
+console.log(myObj);
+myObj.house = 32;
+console.log(myObj);
+// myObj.house = "32";
+// Error: Type 'string' is not assignable to type 'number'.
+// Task 9
+let myArr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+console.log(myArr);
+myArr.push(10);
+console.log(myArr);
+myArr.splice(Math.floor(myArr.length / 2), 0, 55);
+console.log(myArr);
+// myArr.splice(0, 1, "55");
+// Error: Argument of type 'string' is not assignable to parameter of type 'number'.
+// Task 10
+let myDoubleArr = [
+  [1, 3, 5, 7],
+  [2, 4, 6, 8],
+];
+console.log(myDoubleArr[0]);
+let flatArr = myDoubleArr.flat();
+console.log(flatArr[6]);
+// Task 11
+let tuple = ["student", 1, true];
+// let tuple1: [string, number, boolean] = ["student2", 2, "economist"];
+// Error: Type 'string' is not assignable to type 'boolean'.
+// tuple.push("university");
+// console.log(tuple);
+// console.log(tuple[3]);
+// Error: Tuple type '[string, number, boolean]' of length '3' has no element at index '3'.
+// Task 12
+var role;
+(function (role) {
+  role[(role["ADMIN"] = 1)] = "ADMIN";
+  role[(role["USER"] = 15)] = "USER";
+  role[(role["GUEST"] = 125)] = "GUEST";
+})(role || (role = {}));
+const admin = role.ADMIN;
+const user = role.USER;
+const guest = role.GUEST;
+console.log(admin);
+console.log(user);
+console.log(guest);
+// Task 13
+let myData = "33";
+myData = 33;
+// myData = true;
+// Error: Type 'boolean' is not assignable to type 'string | number'.
+// Добзоляє змінювати тип даних на один з заздалегіть визначених.
+// Дає деяку гнучкість коду але не втрачає захисту від "шалених ручок"
+// Task 14
+function getData(data) {
+  if (typeof data === "string") {
+    return data.toUpperCase();
+  } else {
+    return data.toFixed();
+  }
+}
+console.log(getData("Twenty and one"));
+console.log(getData(20.1));
+function getData2(data) {
+  if (typeof data === "string") {
+    return data.toUpperCase();
+  } else {
+    return data.toFixed();
+  }
+}
+console.log(getData2("Twenty and two"));
+console.log(getData2(20.2));
+
+                </code></pre>
               </div>
             </div>
           </div>
