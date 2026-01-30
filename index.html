@@ -10439,21 +10439,1136 @@ console.log(getData2(20.2));
             <div class="accordion-item">
               <div class="accordion-header">Матеріал</div>
               <div class="accordion-content">
-                <p>Контент першого розділу акордіону.</p>
+                <h2 class="h1">TypeScript: складні типи, інтерфейси та ООП</h2>
+
+                <section>
+                  <h2>1. Що таке складні типи (Complex Types)</h2>
+                  <p>
+                    <strong>Складні типи</strong> в TypeScript — це розширені
+                    конструкції типів, які дозволяють точніше описувати
+                    структуру даних.
+                  </p>
+                  <p>
+                    Вони використовуються разом з базовими типами
+                    (<code>string</code>, <code>number</code>,
+                    <code>boolean</code>) і роблять код більш надійним та
+                    читабельним.
+                  </p>
+                </section>
+
+                <section>
+                  <h2>2. Tuple (кортежі)</h2>
+                  <p>
+                    <strong>Tuple</strong> — це масив фіксованої довжини, де
+                    кожен елемент має свій тип.
+                  </p>
+                  <pre><code>let userData: [string, number, boolean] = ["Alex", 25, true];</code></pre>
+                  <p>
+                    👉 Часто використовуються для повернення кількох значень з
+                    функції.
+                  </p>
+                </section>
+
+                <section>
+                  <h2>3. Enum</h2>
+                  <p><strong>Enum</strong> — набір іменованих констант.</p>
+                  <pre><code>enum Status {
+  Active,
+  Disabled,
+  Pending
+}
+
+let currentStatus: Status = Status.Active;</code></pre>
+
+                  <p>
+                    👉 За замовчуванням значення починаються з <code>0</code>.
+                  </p>
+                </section>
+
+                <section>
+                  <h2>4. Union типи</h2>
+                  <p>
+                    <strong>Union</strong> дозволяє змінній мати один з кількох
+                    типів.
+                  </p>
+                  <pre><code>let id: number | string;
+id = 10;
+id = "10";</code></pre>
+                </section>
+
+                <section>
+                  <h2>5. Intersection типи</h2>
+                  <p>
+                    <strong>Intersection</strong> поєднує кілька типів в один.
+                  </p>
+                  <pre><code>type Person = { name: string };
+type Employee = { salary: number };
+
+type Worker = Person & Employee;
+
+const worker: Worker = {
+name: "Bob",
+salary: 1500
+};</code></pre>
+
+                  <p>
+                    👉 Обʼєкт має відповідати <strong>усім</strong> типам
+                    одночасно.
+                  </p>
+                </section>
+
+                <section>
+                  <h2>6. Interfaces</h2>
+                  <p><strong>Interface</strong> описує форму обʼєкта.</p>
+                  <pre><code>interface User {
+  name: string;
+  age: number;
+}
+
+const user: User = {
+name: "Anna",
+age: 28
+};</code></pre>
+                </section>
+
+                <section>
+                  <h2>7. Опціональні властивості</h2>
+                  <p>В інтерфейсах можна задавати необовʼязкові поля.</p>
+                  <pre><code>interface Product {
+  title: string;
+  price?: number;
+}</code></pre>
+                </section>
+
+                <section>
+                  <h2>8. Interface vs Type Alias</h2>
+                  <p>
+                    І <code>interface</code>, і
+                    <code>type</code> використовуються для опису обʼєктів.
+                  </p>
+                  <ul>
+                    <li>
+                      <code>interface</code> — краще для опису обʼєктів і
+                      розширення
+                    </li>
+                    <li>
+                      <code>type</code> — універсальніший (union, intersection)
+                    </li>
+                  </ul>
+                </section>
+
+                <section>
+                  <h2>9. Класи в TypeScript</h2>
+                  <p>
+                    <strong>Класи</strong> — основа обʼєктно-орієнтованого
+                    програмування.
+                  </p>
+                  <pre><code>class Person {
+  name: string;
+
+constructor(name: string) {
+this.name = name;
+}
+
+greet(): void {
+console.log(`Hello, ${this.name}`);
+}
+}</code></pre>
+                </section>
+
+                <section>
+                  <h2>10. Модифікатори доступу</h2>
+                  <p>TypeScript підтримує:</p>
+                  <ul>
+                    <li><code>public</code> — доступний всюди</li>
+                    <li><code>private</code> — лише всередині класу</li>
+                    <li><code>protected</code> — в класі та його нащадках</li>
+                  </ul>
+                </section>
+
+                <section>
+                  <h2>11. Наслідування</h2>
+                  <pre><code>class Employee extends Person {
+  salary: number;
+
+constructor(name: string, salary: number) {
+super(name);
+this.salary = salary;
+}
+}</code></pre>
+                </section>
+
+                <section>
+                  <h2>12. Поліморфізм</h2>
+                  <p>Методи базового класу можуть бути перевизначені.</p>
+                  <pre><code>class Admin extends Employee {
+  override greet(): void {
+    console.log(`Admin ${this.name}`);
+  }
+}</code></pre>
+                </section>
+
+                <section>
+                  <h2>13. Абстрактні класи</h2>
+                  <p>
+                    <strong>Абстрактні класи</strong> не можна створити напряму.
+                  </p>
+                  <pre><code>abstract class Shape {
+  abstract getArea(): number;
+}
+
+class Square extends Shape {
+constructor(private size: number) {
+super();
+}
+
+getArea(): number {
+return this.size * this.size;
+}
+}</code></pre>
+                </section>
+
+                <section>
+                  <h2>14. Type Narrowing</h2>
+                  <p>TypeScript уточнює тип залежно від умов.</p>
+                  <pre><code>function printValue(value: string | number) {
+  if (typeof value === "string") {
+    console.log(value.toUpperCase());
+  } else {
+    console.log(value.toFixed(2));
+  }
+}</code></pre>
+                </section>
+
+                <section>
+                  <h2>15. Підсумок</h2>
+                  <ul>
+                    <li>Complex types підвищують надійність коду</li>
+                    <li>Interfaces і types допомагають описувати структури</li>
+                    <li>ООП робить код масштабованим</li>
+                    <li>Type Narrowing зменшує runtime-помилки</li>
+                  </ul>
+                </section>
               </div>
             </div>
             <div class="accordion-item">
               <div class="accordion-header">Завдання</div>
               <div class="accordion-content">
-                <p>Контент другого розділу акордіону.</p>
+                <h2>
+                  Практичні завдання: TypeScript — Interfaces, OOP, Intersection
+                  Types
+                </h2>
+
+                <div>
+                  <h3>Завдання 1. Простий interface</h3>
+                  <p>Опиши інтерфейс користувача.</p>
+                  <ul>
+                    <li>
+                      властивості: <code>name</code> (string),
+                      <code>age</code> (number)
+                    </li>
+                    <li>створи обʼєкт на основі інтерфейсу</li>
+                    <li>виведи дані в консоль</li>
+                  </ul>
+                </div>
+
+                <div>
+                  <h3>Завдання 2. Опціональні властивості</h3>
+                  <p>Додай необовʼязкове поле.</p>
+                  <ul>
+                    <li>інтерфейс <code>User</code></li>
+                    <li>поле <code>email?</code></li>
+                    <li>створи обʼєкт без email і з email</li>
+                  </ul>
+                </div>
+
+                <div>
+                  <h3>Завдання 3. Readonly властивість</h3>
+                  <p>Захисти властивість від змін.</p>
+                  <ul>
+                    <li>інтерфейс з <code>readonly id</code></li>
+                    <li>спробуй змінити <code>id</code></li>
+                    <li>проаналізуй помилку</li>
+                  </ul>
+                </div>
+
+                <div>
+                  <h3>Завдання 4. Interface для функції</h3>
+                  <p>Опиши сигнатуру функції через interface.</p>
+                  <ul>
+                    <li>функція приймає два числа</li>
+                    <li>повертає число</li>
+                    <li>реалізуй функцію</li>
+                  </ul>
+                </div>
+
+                <div>
+                  <h3>Завдання 5. Розширення interface</h3>
+                  <p>Використай <code>extends</code>.</p>
+                  <ul>
+                    <li>інтерфейс <code>Person</code></li>
+                    <li>
+                      інтерфейс <code>Employee</code> розширює
+                      <code>Person</code>
+                    </li>
+                    <li>додай поле <code>salary</code></li>
+                  </ul>
+                </div>
+
+                <div>
+                  <h3>Завдання 6. Intersection типи</h3>
+                  <p>Обʼєднай кілька типів.</p>
+                  <ul>
+                    <li>тип <code>User</code> з name</li>
+                    <li>тип <code>Permissions</code> з role</li>
+                    <li>створи intersection тип</li>
+                  </ul>
+                </div>
+
+                <div>
+                  <h3>Завдання 7. Intersection + object</h3>
+                  <p>Створи обʼєкт на основі intersection типу.</p>
+                  <ul>
+                    <li>обʼєкт має відповідати всім типам</li>
+                    <li>спробуй пропустити властивість</li>
+                    <li>перевір помилку TS</li>
+                  </ul>
+                </div>
+
+                <div>
+                  <h3>Завдання 8. Клас з інтерфейсом</h3>
+                  <p>Клас реалізує interface.</p>
+                  <ul>
+                    <li>інтерфейс <code>Vehicle</code></li>
+                    <li>клас <code>Car</code> implements Vehicle</li>
+                    <li>реалізуй всі поля</li>
+                  </ul>
+                </div>
+
+                <div>
+                  <h3>Завдання 9. Модифікатори доступу</h3>
+                  <p>
+                    Використай <code>public</code>, <code>private</code>,
+                    <code>protected</code>.
+                  </p>
+                  <ul>
+                    <li>одне поле зроби private</li>
+                    <li>спробуй звернутися ззовні</li>
+                    <li>проаналізуй помилку</li>
+                  </ul>
+                </div>
+
+                <div>
+                  <h3>Завдання 10. Getter і Setter</h3>
+                  <p>Реалізуй контроль доступу до властивості.</p>
+                  <ul>
+                    <li>приватне поле</li>
+                    <li>getter для читання</li>
+                    <li>setter з перевіркою</li>
+                  </ul>
+                </div>
+
+                <div>
+                  <h3>Завдання 11. Наслідування класів</h3>
+                  <p>Створи базовий клас і нащадка.</p>
+                  <ul>
+                    <li>клас <code>User</code></li>
+                    <li>клас <code>Admin</code> extends User</li>
+                    <li>додай нове поле</li>
+                  </ul>
+                </div>
+
+                <div>
+                  <h3>Завдання 12. Виклик super</h3>
+                  <p>Передай дані в базовий клас.</p>
+                  <ul>
+                    <li>використай <code>super()</code></li>
+                    <li>ініціалізуй поля батьківського класу</li>
+                  </ul>
+                </div>
+
+                <div>
+                  <h3>Завдання 13. Поліморфізм</h3>
+                  <p>Перевизнач метод.</p>
+                  <ul>
+                    <li>базовий клас з методом</li>
+                    <li>дочірній клас перевизначає метод</li>
+                    <li>виклич метод через базовий тип</li>
+                  </ul>
+                </div>
+
+                <div>
+                  <h3>Завдання 14. Ключове слово override</h3>
+                  <p>Явно вкажи перевизначення.</p>
+                  <ul>
+                    <li>використай <code>override</code></li>
+                    <li>спробуй змінити сигнатуру</li>
+                    <li>проаналізуй помилку</li>
+                  </ul>
+                </div>
+
+                <div>
+                  <h3>Завдання 15. Абстрактний клас</h3>
+                  <p>Створи абстрактний клас.</p>
+                  <ul>
+                    <li>абстрактний метод</li>
+                    <li>дочірній клас реалізує метод</li>
+                    <li>спробуй створити екземпляр абстрактного класу</li>
+                  </ul>
+                </div>
+
+                <div>
+                  <h3>Завдання 16. Interface + abstract class</h3>
+                  <p>Комбінування підходів.</p>
+                  <ul>
+                    <li>інтерфейс описує поведінку</li>
+                    <li>абстрактний клас частково реалізує</li>
+                    <li>клас-нащадок завершує реалізацію</li>
+                  </ul>
+                </div>
+
+                <div>
+                  <h3>Завдання 17. Type Narrowing (typeof)</h3>
+                  <p>Звузь тип через перевірку.</p>
+                  <ul>
+                    <li>аргумент <code>string | number</code></li>
+                    <li>різна логіка для кожного типу</li>
+                  </ul>
+                </div>
+
+                <div>
+                  <h3>Завдання 18. Type Narrowing (instanceof)</h3>
+                  <p>Використай класи для narrowing.</p>
+                  <ul>
+                    <li>два класи</li>
+                    <li>перевірка через <code>instanceof</code></li>
+                  </ul>
+                </div>
+
+                <div>
+                  <h3>Завдання 19. Intersection + Interface</h3>
+                  <p>Поєднай interface та type.</p>
+                  <ul>
+                    <li>interface з базовими полями</li>
+                    <li>type з додатковими</li>
+                    <li>intersection тип</li>
+                  </ul>
+                </div>
+
+                <div>
+                  <h3>Завдання 20. Комплексне завдання (OOP)</h3>
+                  <p>Реалізуй міні-модель.</p>
+                  <ul>
+                    <li>interface для користувача</li>
+                    <li>базовий клас</li>
+                    <li>клас Admin з наслідуванням</li>
+                    <li>перевизнач метод</li>
+                    <li>використай модифікатори доступу</li>
+                  </ul>
+                </div>
               </div>
             </div>
             <div class="accordion-item">
               <div class="accordion-header">Рішення</div>
               <div class="accordion-content">
                 <p>
-                  <a href="#" class="link">Завдання 1-15</a>
+                  <a href="lesson13/index.html" target="_blank" class="link"
+                    >Рішення</a
+                  >
                 </p>
+                <pre><code>
+                  script.ts
+// Task 1 & 2 & 3
+
+interface Users {
+  name: string;
+  age: number;
+  email?: string;
+  readonly id: number;
+}
+
+const firstUser: Users = {
+  name: "Bob",
+  age: 12,
+  id: 1,
+};
+const secondUser: Users = {
+  name: "Bib",
+  age: 52,
+  email: "somemail@nomail.net",
+  id: 2,
+};
+
+console.log(firstUser);
+console.log(secondUser);
+console.log(secondUser.id);
+// secondUser.id = 12;
+// console.log(secondUser.id);
+// Error: Cannot assign to 'id' because it is a read-only property.
+
+// Task 4
+
+interface MathFunc {
+  (x: number, y: number): number;
+}
+
+const addFunc: MathFunc = (x, y) => {
+  return x + y;
+};
+
+const multiplyFunc: MathFunc = (x, y) => {
+  return x * y;
+};
+
+console.log(addFunc(10, 25));
+console.log(multiplyFunc(10, 25));
+
+// Task 5
+
+interface Person {
+  name: string;
+  age: number;
+  email?: string;
+  readonly id: number;
+}
+
+interface Employee extends Person {
+  readonly salary: number;
+}
+
+const employeeBub: Employee = {
+  name: "Bub",
+  age: 22,
+  email: "somemail2@nomail.net",
+  id: 1,
+  salary: 2500,
+};
+
+console.log(employeeBub);
+
+// Task 6 & 7
+
+type User = { name: string };
+type Permissions = { role: string };
+
+type Worker = User & Permissions;
+
+const workerBib: Worker = {
+  name: "Bib",
+  role: "chief",
+};
+
+// const workerBob: Worker = {
+//   name: "Bob",
+// };
+// Error: Type '{ name: string; }' is not assignable to type 'Worker'.  Property 'role' is missing in type '{ name: string; }' but required in type 'Permissions'.
+
+// Task 8
+
+interface Vehicle {
+  brand: string;
+  model: string;
+  type: string;
+  year: number;
+  getInfo(): string;
+}
+
+class Car implements Vehicle {
+  // brand: string;
+  // model: string;
+  // type: string;
+  // year: number;
+
+  // constructor(brand: string, model: string, type: string, year: number) {
+  //   this.brand = brand;
+  //   this.model = model;
+  //   this.type = type;
+  //   this.year = year;
+  // }
+
+  constructor(
+    public brand: string,
+    public model: string,
+    public type: string,
+    public year: number,
+  ) {}
+
+  getInfo(): string {
+    return `Car: ${this.brand} ${this.model} Type: ${this.type} Year: ${this.year}`;
+  }
+}
+
+const myBMW = new Car("BMW", "V55", "electro", 2026);
+
+console.log(myBMW.getInfo());
+
+// Task 9
+
+class ChinaCar implements Vehicle {
+  constructor(
+    public brand: string,
+    public model: string,
+    public type: string,
+    public year: number,
+    private manufacture: string,
+  ) {}
+
+  getInfo(): string {
+    return `Car: ${this.brand} ${this.model} Type: ${this.type} Year: ${this.year} Manufacturer: ${this.manufacture}`;
+  }
+}
+
+const myFakeBMW = new ChinaCar("BMW", "V55", "electro", 2026, "China");
+
+console.log(myFakeBMW.getInfo());
+// console.log(myFakeBMW.manufacture);
+// myFakeBMW.manufacture = "Germany";
+// Error: Property 'manufacture' is private and only accessible within class 'ChinaCar'.
+
+// Task 10
+
+class BankAccount {
+  private _balance: number = 0;
+
+  constructor(initialBalance: number) {
+    this.balance = initialBalance;
+  }
+
+  get balance(): number {
+    return this._balance;
+  }
+
+  set balance(newValue: number) {
+    if (newValue < 0) {
+      return;
+    }
+    this._balance = newValue;
+  }
+
+  public deposit(amount: number): void {
+    if (amount <= 0) {
+      console.error("Сума депозиту має бути більшою за нуль");
+      return;
+    }
+    this.balance += amount;
+    console.log(`Поповнено на ${amount}. Поточний баланс: ${this.balance}`);
+  }
+
+  public withdraw(amount: number): void {
+    if (amount <= 0) {
+      console.error("Сума зняття має бути більшою за нуль");
+      return;
+    }
+
+    const previousBalance = this.balance;
+    this.balance -= amount;
+
+    if (this.balance === previousBalance) {
+      console.error("Зняття відхилено: недостатньо коштів.");
+    } else {
+      console.log(`Знято ${amount}. Залишок: ${this.balance}`);
+    }
+  }
+}
+
+const myAccount = new BankAccount(100);
+
+console.log(`Мій баланс: ${myAccount.balance}`);
+
+myAccount.balance = 500;
+myAccount.balance = -200;
+myAccount.deposit(200);
+myAccount.withdraw(200);
+myAccount.withdraw(2000);
+console.log(`Мій баланс: ${myAccount.balance}`);
+
+// Task 11 & 12 & 13 & 14
+
+class NewUser {
+  firstName: string;
+  lastName: string;
+  age: number;
+
+  constructor(firstName: string, lastName: string, age: number) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.age = age;
+  }
+
+  userInfo(): void {
+    console.log(
+      `This is ${this.firstName} ${this.lastName}, ${this.age}'s old`,
+    );
+  }
+}
+
+class Admin extends NewUser {
+  role: string;
+  constructor(firstName: string, lastName: string, age: number, role: string) {
+    super(firstName, lastName, age);
+    this.role = role;
+  }
+
+  override userInfo(): void {
+    console.log(
+      `This is ${this.firstName} ${this.lastName}, ${this.age}'s old, our ${this.role}`,
+    );
+  }
+
+  // greet = `This is ${this.firstName} ${this.lastName}, ${this.age}'s old`;
+
+  // override userInfo(greet: string): void {
+  //   console.log(`${greet} , our ${this.role}`);
+  // }
+
+  // Error Property 'userInfo' in type 'Admin' is not assignable to the same property in base type 'NewUser'.
+  // Type '(greet: string) => void' is not assignable to type '() => void'.
+  // Target signature provides too few arguments. Expected 1 or more, but got 0.
+}
+
+// Task 15 & 16 & 18
+
+interface Sound {
+  makeSound(): void;
+}
+
+abstract class Animal implements Sound {
+  constructor(public name: string) {}
+
+  breathe() {
+    console.log(`${this.name} дихає...`);
+  }
+
+  abstract makeSound(): void;
+}
+
+// const test = new Animal("Хтось");
+// Error: Cannot create an instance of an abstract class.
+
+class Dog extends Animal {
+  makeSound() {
+    console.log(`${this.name} каже: Гав-гав!`);
+  }
+}
+
+class Cat extends Animal {
+  makeSound() {
+    console.log(`${this.name} каже: Мяу!`);
+  }
+}
+
+const myDog = new Dog("Сірко");
+myDog.breathe();
+myDog.makeSound();
+
+const myCat = new Cat("Мурко");
+myCat.breathe();
+myCat.makeSound();
+
+function interactWithAnimal(animal: Animal) {
+  animal.breathe();
+  animal.makeSound();
+
+  if (animal instanceof Dog) {
+    console.log(`${animal.name} виляє хвостом!`);
+  }
+
+  if (animal instanceof Cat) {
+    console.log(`${animal.name} мурчить...`);
+  }
+}
+
+interactWithAnimal(myDog);
+interactWithAnimal(myCat);
+
+// Task 17
+
+function getData(data: number | string) {
+  if (typeof data === "string") {
+    return data.split(" ").join(", ").toUpperCase();
+  } else {
+    return data * 2;
+  }
+}
+
+console.log(getData("Twenty and two"));
+console.log(getData(20.2));
+
+// Task 19
+
+interface ElectronicDevice {
+  brand: string;
+  model: string;
+  powerOn(): void;
+}
+
+type Connectivity = {
+  wifiPassword: string;
+  isConnected: boolean;
+  connectToNetwork(password: string): void;
+};
+
+type SmartGadget = ElectronicDevice & Connectivity;
+
+const myPhone: SmartGadget = {
+  brand: "Apple",
+  model: "iPhone 15",
+  wifiPassword: "123noguest",
+  isConnected: true,
+
+  powerOn() {
+    console.log(`${this.brand} вмикається...`);
+  },
+
+  connectToNetwork(password: string) {
+    if (password === this.wifiPassword) {
+      console.log(`Підключення ${this.model} до мережі...`);
+    } else {
+      console.log(
+        `Підключення ${this.model} до мережі скасовано. Невірний пароль...`,
+      );
+    }
+  },
+};
+
+myPhone.powerOn();
+myPhone.connectToNetwork("123");
+
+// Task 20
+
+interface IUser {
+  id: number;
+  userName: string;
+  getRole(): string;
+}
+
+class BaseUser implements IUser {
+  constructor(
+    public readonly id: number,
+    public userName: string,
+    protected email: string,
+  ) {}
+
+  public getRole(): string {
+    return "User";
+  }
+
+  public getContactInfo(): string {
+    return `Користувач: ${this.userName}, Email: ${this.email}`;
+  }
+}
+
+class NewAdmin extends BaseUser {
+  private permissions: string[];
+
+  constructor(
+    id: number,
+    userName: string,
+    email: string,
+    permissions: string[],
+  ) {
+    super(id, userName, email);
+    this.permissions = permissions;
+  }
+
+  public override getRole(): string {
+    return `Admin (Доступи: ${this.permissions.join(", ")})`;
+  }
+
+  public checkSecurity(): void {
+    console.log(`Перевірка безпеки для ${this.email}... Доступ дозволено.`);
+  }
+}
+
+const commonUser = new BaseUser(1, "ivan_petrov", "ivan@mail.com");
+const superAdmin = new NewAdmin(99, "admin_boss", "boss@corp.com", [
+  "delete_users",
+  "edit_content",
+]);
+
+console.log(commonUser.getRole());
+console.log(commonUser.getContactInfo());
+console.log(superAdmin.getRole());
+console.log(superAdmin.getContactInfo());
+
+superAdmin.checkSecurity();
+// commonUser.checkSecurity();
+// Error: Property 'checkSecurity' does not exist on type 'BaseUser'.
+
+                        script.js
+ "use strict";
+// Task 1 & 2 & 3
+
+const firstUser = {
+  name: "Bob",
+  age: 12,
+  id: 1,
+};
+const secondUser = {
+  name: "Bib",
+  age: 52,
+  email: "somemail@nomail.net",
+  id: 2,
+};
+console.log(firstUser);
+console.log(secondUser);
+console.log(secondUser.id);
+const addFunc = (x, y) => {
+  return x + y;
+};
+const multiplyFunc = (x, y) => {
+  return x * y;
+};
+console.log(addFunc(10, 25));
+console.log(multiplyFunc(10, 25));
+const employeeBub = {
+  name: "Bub",
+  age: 22,
+  email: "somemail2@nomail.net",
+  id: 1,
+  salary: 2500,
+};
+console.log(employeeBub);
+const workerBib = {
+  name: "Bib",
+  role: "chief",
+};
+class Car {
+  brand;
+  model;
+  type;
+  year;
+  // brand: string;
+  // model: string;
+  // type: string;
+  // year: number;
+  // constructor(brand: string, model: string, type: string, year: number) {
+  //   this.brand = brand;
+  //   this.model = model;
+  //   this.type = type;
+  //   this.year = year;
+  // }
+  constructor(brand, model, type, year) {
+    this.brand = brand;
+    this.model = model;
+    this.type = type;
+    this.year = year;
+  }
+  getInfo() {
+    return `Car: ${this.brand} ${this.model} Type: ${this.type} Year: ${this.year}`;
+  }
+}
+const myBMW = new Car("BMW", "V55", "electro", 2026);
+console.log(myBMW.getInfo());
+// Task 9
+class ChinaCar {
+  brand;
+  model;
+  type;
+  year;
+  manufacture;
+  constructor(brand, model, type, year, manufacture) {
+    this.brand = brand;
+    this.model = model;
+    this.type = type;
+    this.year = year;
+    this.manufacture = manufacture;
+  }
+  getInfo() {
+    return `Car: ${this.brand} ${this.model} Type: ${this.type} Year: ${this.year} Manufacturer: ${this.manufacture}`;
+  }
+}
+const myFakeBMW = new ChinaCar("BMW", "V55", "electro", 2026, "China");
+console.log(myFakeBMW.getInfo());
+// console.log(myFakeBMW.manufacture);
+// myFakeBMW.manufacture = "Germany";
+// Error: Property 'manufacture' is private and only accessible within class 'ChinaCar'.
+// Task 10
+class BankAccount {
+  _balance = 0;
+  constructor(initialBalance) {
+    this.balance = initialBalance;
+  }
+  get balance() {
+    return this._balance;
+  }
+  set balance(newValue) {
+    if (newValue < 0) {
+      return;
+    }
+    this._balance = newValue;
+  }
+  deposit(amount) {
+    if (amount <= 0) {
+      console.error("Сума депозиту має бути більшою за нуль");
+      return;
+    }
+    this.balance += amount;
+    console.log(`Поповнено на ${amount}. Поточний баланс: ${this.balance}`);
+  }
+  withdraw(amount) {
+    if (amount <= 0) {
+      console.error("Сума зняття має бути більшою за нуль");
+      return;
+    }
+    const previousBalance = this.balance;
+    this.balance -= amount;
+    if (this.balance === previousBalance) {
+      console.error("Зняття відхилено: недостатньо коштів.");
+    } else {
+      console.log(`Знято ${amount}. Залишок: ${this.balance}`);
+    }
+  }
+}
+const myAccount = new BankAccount(100);
+console.log(`Мій баланс: ${myAccount.balance}`);
+myAccount.balance = 500;
+myAccount.balance = -200;
+myAccount.deposit(200);
+myAccount.withdraw(200);
+myAccount.withdraw(2000);
+console.log(`Мій баланс: ${myAccount.balance}`);
+// Task 11 & 12 & 13 & 14
+class NewUser {
+  firstName;
+  lastName;
+  age;
+  constructor(firstName, lastName, age) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.age = age;
+  }
+  userInfo() {
+    console.log(
+      `This is ${this.firstName} ${this.lastName}, ${this.age}'s old`,
+    );
+  }
+}
+class Admin extends NewUser {
+  role;
+  constructor(firstName, lastName, age, role) {
+    super(firstName, lastName, age);
+    this.role = role;
+  }
+  userInfo() {
+    console.log(
+      `This is ${this.firstName} ${this.lastName}, ${this.age}'s old, our ${this.role}`,
+    );
+  }
+}
+class Animal {
+  name;
+  constructor(name) {
+    this.name = name;
+  }
+  breathe() {
+    console.log(`${this.name} дихає...`);
+  }
+}
+// const test = new Animal("Хтось");
+// Error: Cannot create an instance of an abstract class.
+class Dog extends Animal {
+  makeSound() {
+    console.log(`${this.name} каже: Гав-гав!`);
+  }
+}
+class Cat extends Animal {
+  makeSound() {
+    console.log(`${this.name} каже: Мяу!`);
+  }
+}
+const myDog = new Dog("Сірко");
+myDog.breathe();
+myDog.makeSound();
+const myCat = new Cat("Мурко");
+myCat.breathe();
+myCat.makeSound();
+function interactWithAnimal(animal) {
+  animal.breathe();
+  animal.makeSound();
+  if (animal instanceof Dog) {
+    console.log(`${animal.name} виляє хвостом!`);
+  }
+  if (animal instanceof Cat) {
+    console.log(`${animal.name} мурчить...`);
+  }
+}
+interactWithAnimal(myDog);
+interactWithAnimal(myCat);
+// Task 17
+function getData(data) {
+  if (typeof data === "string") {
+    return data.split(" ").join(", ").toUpperCase();
+  } else {
+    return data * 2;
+  }
+}
+console.log(getData("Twenty and two"));
+console.log(getData(20.2));
+const myPhone = {
+  brand: "Apple",
+  model: "iPhone 15",
+  wifiPassword: "123noguest",
+  isConnected: true,
+  powerOn() {
+    console.log(`${this.brand} вмикається...`);
+  },
+  connectToNetwork(password) {
+    if (password === this.wifiPassword) {
+      console.log(`Підключення ${this.model} до мережі...`);
+    } else {
+      console.log(
+        `Підключення ${this.model} до мережі скасовано. Невірний пароль...`,
+      );
+    }
+  },
+};
+myPhone.powerOn();
+myPhone.connectToNetwork("123");
+class BaseUser {
+  id;
+  userName;
+  email;
+  constructor(id, userName, email) {
+    this.id = id;
+    this.userName = userName;
+    this.email = email;
+  }
+  getRole() {
+    return "User";
+  }
+  getContactInfo() {
+    return `Користувач: ${this.userName}, Email: ${this.email}`;
+  }
+}
+class NewAdmin extends BaseUser {
+  permissions;
+  constructor(id, userName, email, permissions) {
+    super(id, userName, email);
+    this.permissions = permissions;
+  }
+  getRole() {
+    return `Admin (Доступи: ${this.permissions.join(", ")})`;
+  }
+  checkSecurity() {
+    console.log(`Перевірка безпеки для ${this.email}... Доступ дозволено.`);
+  }
+}
+const commonUser = new BaseUser(1, "ivan_petrov", "ivan@mail.com");
+const superAdmin = new NewAdmin(99, "admin_boss", "boss@corp.com", [
+  "delete_users",
+  "edit_content",
+]);
+console.log(commonUser.getRole());
+console.log(commonUser.getContactInfo());
+console.log(superAdmin.getRole());
+console.log(superAdmin.getContactInfo());
+superAdmin.checkSecurity();
+// commonUser.checkSecurity();
+// Error: Property 'checkSecurity' does not exist on type 'BaseUser'.
+
+
+                </code></pre>
               </div>
             </div>
           </div>
