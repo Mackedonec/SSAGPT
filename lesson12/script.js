@@ -1,4 +1,3 @@
-"use strict";
 // Task 1
 const userName = "Bob";
 const age = 22;

@@ -1,6 +1,4 @@
-"use strict";
 // Task 1 & 2 & 3
-
 const firstUser = {
   name: "Bob",
   age: 12,
@@ -266,5 +264,6 @@ console.log(commonUser.getContactInfo());
 console.log(superAdmin.getRole());
 console.log(superAdmin.getContactInfo());
 superAdmin.checkSecurity();
+
 // commonUser.checkSecurity();
 // Error: Property 'checkSecurity' does not exist on type 'BaseUser'.
